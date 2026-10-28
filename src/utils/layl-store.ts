@@ -223,20 +223,31 @@ export function applyStorewideSale(
 }
 
 /**
- * Toggles an item ID in the wishlist array
+ * Toggles an item ID in the wishlist array using normalized string comparison
  */
-export function toggleWishlistItem(wishlistIds: string[], productId: string): string[] {
-  if (wishlistIds.includes(productId)) {
-    return wishlistIds.filter(id => id !== productId);
+export function toggleWishlistItem(wishlistIds: string[], productId: string | number): string[] {
+  const targetId = String(productId);
+  if (wishlistIds.some(id => String(id) === targetId)) {
+    return wishlistIds.filter(id => String(id) !== targetId);
   }
-  return [...wishlistIds, productId];
+  return [...wishlistIds.map(String), targetId];
 }
 
 /**
  * Checks if a product is in the wishlist
  */
-export function isProductInWishlist(wishlistIds: string[], productId: string): boolean {
-  return wishlistIds.includes(productId);
+export function isProductInWishlist(wishlistIds: string[], productId: string | number): boolean {
+  const targetId = String(productId);
+  return wishlistIds.some(id => String(id) === targetId);
+}
+
+/**
+ * Resolves wishlist IDs against the current product catalog in saved order
+ */
+export function resolveWishlistProducts(products: Product[], wishlistIds: string[]): Product[] {
+  return wishlistIds
+    .map(id => products.find(p => String(p.id) === String(id)))
+    .filter((p): p is Product => Boolean(p));
 }
 
 /**
@@ -296,6 +307,308 @@ export function updateProductById(
 ): Product[] {
   return products.map(p => (String(p.id) === String(id) ? { ...p, ...updates } : p));
 }
+
+/**
+ * Complete directory of all 27 Egyptian Governorates and their major cities/districts
+ */
+export const EGYPT_GOVERNORATES_CITIES: Record<string, string[]> = {
+  'Cairo': [
+    'New Cairo / Tagamoa',
+    'Zamalek',
+    'Maadi',
+    'Heliopolis',
+    'Nasr City',
+    'Downtown Cairo',
+    'Garden City',
+    'El Rehab',
+    'Madinaty',
+    'El Shorouk',
+    'New Administrative Capital',
+    'Katameya',
+    'Mokattam',
+    'El Manial',
+    'Shubra',
+    'Ain Shams',
+    'Obour City',
+    'Badr City',
+    'Helwan',
+    '15th of May City'
+  ],
+  'Giza': [
+    'Sheikh Zayed',
+    '6th of October City',
+    'Dokki',
+    'Mohandessin',
+    'Agouza',
+    'Haram',
+    'Faisal',
+    'Hadayek El Ahram',
+    'Smart Village',
+    'Imbaba',
+    'Kerdasa',
+    'El Warraq',
+    'Hawamdiya',
+    'Badrashein'
+  ],
+  'Alexandria': [
+    'Smouha',
+    'Kafr Abdo',
+    'Gleem',
+    'San Stefano',
+    'Stanley',
+    'Sidi Gaber',
+    'Roushdy',
+    'Laurent',
+    'Miami',
+    'Montaza',
+    'Sporting',
+    'Camp Caesar',
+    'Mandara',
+    'Mansheya',
+    'Agami',
+    'Borg El Arab'
+  ],
+  'Dakahlia': [
+    'Mansoura',
+    'Talkha',
+    'Mit Ghamr',
+    'Senbellawein',
+    'Belqas',
+    'Sherbin',
+    'Gamasa',
+    'Manzala',
+    'Dekernes',
+    'Aga'
+  ],
+  'Red Sea': [
+    'El Gouna',
+    'Hurghada',
+    'Sahl Hasheesh',
+    'Soma Bay',
+    'Makadi Bay',
+    'Safaga',
+    'Marsa Alam',
+    'El Quseir',
+    'Ras Ghareb'
+  ],
+  'Beheira': [
+    'Damanhour',
+    'Kafr El Dawwar',
+    'Rashid (Rosetta)',
+    'Edko',
+    'Wadi El Natrun',
+    'Abu Hummus',
+    'Kom Hamada',
+    'Etay El Baroud'
+  ],
+  'Fayoum': [
+    'Fayoum City',
+    'New Fayoum',
+    'Tunis Village',
+    'Ibshway',
+    'Tamiya',
+    'Sennuris',
+    'Etsa'
+  ],
+  'Gharbia': [
+    'Tanta',
+    'El Mahalla El Kubra',
+    'Kafr El Zayat',
+    'Zefta',
+    'Samannoud',
+    'Basyoun',
+    'Santa',
+    'Qutour'
+  ],
+  'Ismailia': [
+    'Ismailia City',
+    'Fayed',
+    'Qantara West',
+    'Qantara East',
+    'Tell El Kebir',
+    'Abu Suwir',
+    'Kasassin'
+  ],
+  'Menofia': [
+    'Shebin El Kom',
+    'Sadat City',
+    'Menouf',
+    'Ashmoun',
+    'Quesna',
+    'Bagour',
+    'Berket El Sabaa',
+    'Tala'
+  ],
+  'Minya': [
+    'Minya City',
+    'New Minya',
+    'Mallawi',
+    'Samalut',
+    'Maghagha',
+    'Beni Mazar',
+    'Mattay',
+    'Abu Qurqas',
+    'Deir Mawas'
+  ],
+  'Qalyubia': [
+    'Banha',
+    'Obour',
+    'Shubra El Kheima',
+    'Qalyub',
+    'Khanka',
+    'Qanater El Khayreya',
+    'Toukh',
+    'Kafr Shukr',
+    'Shebin El Qanater'
+  ],
+  'New Valley': [
+    'Kharga',
+    'Dakhla',
+    'Farafra',
+    'Baris',
+    'Balat'
+  ],
+  'Suez': [
+    'Suez City',
+    'Ain Sokhna',
+    'Port Tawfiq',
+    'Arbaeen',
+    'Ataqah',
+    'Faisal District'
+  ],
+  'Aswan': [
+    'Aswan City',
+    'New Aswan',
+    'Kom Ombo',
+    'Edfu',
+    'Daraw',
+    'Abu Simbel',
+    'Nasr El Nuba'
+  ],
+  'Assiut': [
+    'Assiut City',
+    'New Assiut',
+    'Dairut',
+    'Manfalut',
+    'Qusiya',
+    'Abnub',
+    'Abu Tig',
+    'El Badari'
+  ],
+  'Beni Suef': [
+    'Beni Suef City',
+    'New Beni Suef',
+    'El Wasta',
+    'Nasser',
+    'Beba',
+    'Ehnasia',
+    'Fashn',
+    'Somosta'
+  ],
+  'Port Said': [
+    'Port Said City',
+    'Port Fouad',
+    'Al Sharq',
+    'El Arab',
+    'El Manakh',
+    'El Zohour',
+    'El Dawahy'
+  ],
+  'Damietta': [
+    'Damietta City',
+    'New Damietta',
+    'Ras El Bar',
+    'Faraskour',
+    'Kafr Saad',
+    'Zarqa',
+    'Ezbet El Borg'
+  ],
+  'Sharkia': [
+    'Zagazig',
+    '10th of Ramadan City',
+    'Belbeis',
+    'Minya El Qamh',
+    'Fakous',
+    'Abu Hammad',
+    'Hehya',
+    'Kafr Saqr'
+  ],
+  'South Sinai': [
+    'Sharm El Sheikh',
+    'Dahab',
+    'El Gouna / Ras Sedr',
+    'Ras Sedr',
+    'El Tor',
+    'Nuweiba',
+    'Taba',
+    'Saint Catherine'
+  ],
+  'Kafr El Sheikh': [
+    'Kafr El Sheikh City',
+    'Desouk',
+    'Baltim',
+    'Fouh',
+    'Metoubes',
+    'Biyala',
+    'Sidi Salem',
+    'Hamoul'
+  ],
+  'Matrouh': [
+    'Marsa Matrouh',
+    'North Coast (Sahel)',
+    'New Alamein',
+    'El Alamein',
+    'Sidi Abdel Rahman / Marassi',
+    'Hacienda / Ras El Hekma',
+    'El Dabaa',
+    'El Hammam',
+    'Siwa'
+  ],
+  'Luxor': [
+    'Luxor City',
+    'East Bank',
+    'West Bank',
+    'Karnak',
+    'Esna',
+    'Armant',
+    'El Tod',
+    'El Ziniya'
+  ],
+  'Qena': [
+    'Qena City',
+    'New Qena',
+    'Nag Hammadi',
+    'Qous',
+    'Dishna',
+    'Farshout',
+    'Abu Tesht'
+  ],
+  'North Sinai': [
+    'El Arish',
+    'Bir al-Abd',
+    'Sheikh Zuweid',
+    'Nakhl',
+    'Hasana'
+  ],
+  'Sohag': [
+    'Sohag City',
+    'New Sohag',
+    'Akhmim',
+    'Girga',
+    'Tahta',
+    'Tima',
+    'El Balyana',
+    'El Maragha'
+  ]
+};
+
+/**
+ * Returns the list of cities/districts for a given Egyptian Governorate
+ */
+export function getCitiesForGovernorate(governorate: string): string[] {
+  return EGYPT_GOVERNORATES_CITIES[governorate] || [];
+}
+
 
 
 

@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-alabaster: #F8F6F2;
+  --color-sand: #EFECE6;
+  --color-obsidian: #111111;
+  --color-charcoal: #66625B;
+  --color-hairline: #E2DDD5;
+  --color-hairlineDark: #262626;
+  --color-bronze: #7A5C3E;
+  --color-sienna: #B84A27;
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --tracking-widest-luxury: 0.25em;
+  --tracking-editorial: 0.35em;
+}
+

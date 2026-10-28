@@ -131,9 +131,9 @@
   <!-- ========================================================================= -->
   <!-- 2. CLEAN HEADER (3 ZONES: [ ☰ SHOP BRANDS ] — [ L A Y L ] — [ TRACK / BAG ]) -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-hairline">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
-      <div class="h-20 sm:h-24 flex items-center justify-between gap-2 sm:gap-6">
+  <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-hairline w-full overflow-x-clip">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 md:px-12">
+      <div class="h-16 sm:h-24 flex items-center justify-between gap-1 sm:gap-6">
         
         <!-- Left Zone: [ ☰ SHOP BRANDS ] Button -->
         <div class="flex items-center shrink-0">
@@ -141,46 +141,62 @@
             id="openMenuBtn"
             onclick="openMenuDrawer()" 
             aria-label="Shop Brands Menu"
-            class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:border-obsidian hover:bg-white transition-all shadow-sm"
+            class="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[9px] sm:text-xs font-bold uppercase tracking-normal sm:tracking-widest hover:border-obsidian hover:bg-white transition-all shadow-sm"
           >
-            <i data-lucide="menu" class="w-4 h-4 text-obsidian shrink-0"></i>
+            <i data-lucide="menu" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-obsidian shrink-0"></i>
             <span>Shop Brands</span>
           </button>
         </div>
 
         <!-- Center Zone: Bold L A Y L Wordmark (Clicking resets to home) -->
-        <div class="text-center px-1 sm:px-2 shrink-0">
+        <div class="text-center px-0.5 sm:px-2 shrink-0">
           <a href="#" onclick="resetToHome(event)" class="inline-block group py-1" aria-label="LAYL Home">
-            <span class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.25em] sm:tracking-[0.4em] text-obsidian block uppercase leading-none whitespace-nowrap">
+            <span class="font-serif text-lg sm:text-4xl md:text-5xl font-bold tracking-[0.14em] sm:tracking-[0.4em] text-obsidian block uppercase leading-none whitespace-nowrap">
               LAYL
             </span>
-            <span class="block text-[8px] sm:text-[9px] uppercase tracking-[0.25em] sm:tracking-[0.45em] text-charcoal mt-1 sm:mt-1.5 font-semibold whitespace-nowrap">
+            <span class="hidden sm:block text-[9px] uppercase tracking-[0.45em] text-charcoal mt-1.5 font-semibold whitespace-nowrap">
               Cairo • Global Imports
             </span>
           </a>
         </div>
 
-        <!-- Right Zone: [ TRACK ORDER ] & [ BAG (0) ] (No visible admin button) -->
-        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 shrink-0">
+        <!-- Right Zone: [ TRACK ORDER ] & [ FAVORITES (0) ] & [ BAG (0) ] (No visible admin button) -->
+        <div class="flex items-center gap-1 sm:gap-3 md:gap-4 shrink-0">
           <!-- Track Order Button -->
           <button 
             onclick="openTrackOrderModal()" 
             aria-label="Track Order"
-            class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 md:px-4 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-wider hover:border-obsidian hover:bg-white transition-all"
+            title="Track Order"
+            class="flex items-center justify-center gap-1 sm:gap-2 px-1.5 sm:px-3.5 md:px-4 py-1.5 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[10px] sm:text-xs font-bold uppercase tracking-wider hover:border-obsidian hover:bg-white transition-all"
           >
             <i data-lucide="truck" class="w-3.5 h-3.5 text-charcoal shrink-0"></i>
-            <span class="hidden md:inline">Track Order</span>
+            <span class="hidden lg:inline">Track Order</span>
+          </button>
+
+          <!-- My Favorites / Wishlist Button -->
+          <button 
+            id="openWishlistBtn"
+            onclick="openWishlistDrawer()" 
+            aria-label="My Favorites"
+            title="My Favorites"
+            class="flex items-center gap-1 sm:gap-2 px-1.5 sm:px-3.5 py-1.5 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[10px] sm:text-xs font-bold uppercase tracking-wider hover:border-obsidian hover:bg-white transition-all"
+          >
+            <svg class="w-3.5 h-3.5 text-obsidian shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="hidden md:inline">Favorites</span>
+            <span id="headerWishlistCount" class="bg-obsidian text-white px-1 sm:px-1.5 py-0.2 text-[9px] sm:text-[10px] font-bold min-w-3.5 sm:min-w-4 text-center">0</span>
           </button>
 
           <!-- Shopping Bag Button -->
           <button 
+            id="openCartBtn"
             onclick="openCartDrawer()" 
             aria-label="Shopping Bag"
-            class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-obsidian text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors shadow-sm"
+            title="Shopping Bag"
+            class="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2.5 bg-obsidian text-white text-[10px] sm:text-xs font-bold uppercase tracking-wide sm:tracking-widest hover:bg-zinc-800 transition-colors shadow-sm"
           >
             <i data-lucide="shopping-bag" class="w-3.5 h-3.5 shrink-0"></i>
             <span>Bag</span>
-            <span id="headerCartCount" class="bg-white text-obsidian px-1.5 py-0.2 text-[10px] font-bold min-w-4 text-center">0</span>
+            <span id="headerCartCount" class="bg-white text-obsidian px-1 sm:px-1.5 py-0.2 text-[9px] sm:text-[10px] font-bold min-w-3.5 sm:min-w-4 text-center">0</span>
           </button>
         </div>
 
@@ -194,11 +210,11 @@
   <div id="menuDrawer" class="fixed inset-0 z-50 hidden">
     <div class="drawer-backdrop fixed inset-0" onclick="closeMenuDrawer()"></div>
 
-    <div class="fixed top-0 left-0 bottom-0 w-80 md:w-96 bg-alabaster border-r border-hairline shadow-2xl flex flex-col justify-between z-10 p-8 sm:p-10">
+    <div class="fixed top-0 left-0 bottom-0 w-[86vw] max-w-xs sm:w-80 md:w-96 bg-alabaster border-r border-hairline shadow-2xl flex flex-col justify-between z-10 p-6 sm:p-10 overflow-y-auto">
       
       <!-- Menu Header -->
       <div>
-        <div class="flex items-center justify-between pb-8 border-b border-hairline mb-8">
+        <div class="flex items-center justify-between pb-6 sm:pb-8 border-b border-hairline mb-6 sm:mb-8">
           <div>
             <span class="font-serif text-2xl font-bold tracking-[0.25em] block uppercase text-obsidian">LAYL</span>
             <span class="text-[9px] uppercase tracking-widest text-charcoal font-semibold">Collections Menu</span>
@@ -209,7 +225,7 @@
         </div>
 
         <!-- Navigation Links (Spacious Editorial Typography) -->
-        <nav class="space-y-6 text-sm uppercase font-bold tracking-widest text-obsidian">
+        <nav class="space-y-4 sm:space-y-6 text-sm uppercase font-bold tracking-widest text-obsidian">
           <div>
             <button onclick="setHouseFilter('All'); closeMenuDrawer();" class="w-full text-left py-2 hover:translate-x-1.5 transition-transform flex items-center justify-between group">
               <span>Shop All</span>
@@ -241,6 +257,24 @@
             </button>
           </div>
           <div class="pt-2 border-t border-hairline/60">
+            <button onclick="closeMenuDrawer(); openCartDrawer();" class="w-full text-left py-2 text-obsidian hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span class="flex items-center gap-2">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                <span>Shopping Bag</span>
+              </span>
+              <span id="menuCartCount" class="text-[10px] font-bold bg-obsidian text-white px-2 py-0.5">0</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="closeMenuDrawer(); openWishlistDrawer();" class="w-full text-left py-2 text-obsidian hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span class="flex items-center gap-2">
+                <i data-lucide="heart" class="w-4 h-4"></i>
+                <span>My Favorites</span>
+              </span>
+              <span id="menuWishlistCount" class="text-[10px] font-bold bg-obsidian text-white px-2 py-0.5">0</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
             <button onclick="closeMenuDrawer(); openTrackOrderModal();" class="w-full text-left py-2 text-charcoal hover:text-obsidian hover:translate-x-1.5 transition-transform flex items-center justify-between group">
               <span class="flex items-center gap-2">
                 <i data-lucide="truck" class="w-4 h-4"></i>
@@ -253,7 +287,7 @@
       </div>
 
       <!-- Menu Drawer Footer: Customer Support Line + HIDDEN BOTTOM-LEFT KEYPAD -->
-      <div class="pt-8 border-t border-hairline flex items-end justify-between">
+      <div class="pt-6 sm:pt-8 border-t border-hairline flex items-end justify-between mt-6">
         
         <!-- Hidden Keypad Icon Button (CRITICAL: Very bottom-left, NO text label, PIN is 0000) -->
         <button 
@@ -646,28 +680,42 @@
   <div id="productModal" class="fixed inset-0 w-screen h-screen bg-[#FAF8F5] z-50 overflow-y-auto hidden">
     
     <!-- Top Bar of Product Page: [ ← BACK TO SHOP ] | L A Y L | BAG (0) -->
-    <div class="sticky top-0 z-20 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-hairline">
-      <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 h-20 flex items-center justify-between gap-4">
+    <div class="sticky top-0 z-20 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-hairline w-full overflow-x-clip">
+      <div class="max-w-7xl mx-auto px-2.5 sm:px-8 md:px-12 h-16 sm:h-20 flex items-center justify-between gap-1.5 sm:gap-4">
         <button 
           onclick="closeProductModal()" 
-          class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:border-obsidian hover:bg-white transition-all"
+          class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-5 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:border-obsidian hover:bg-white transition-all shrink-0"
           aria-label="Back to Shop"
         >
-          <i data-lucide="arrow-left" class="w-4 h-4"></i>
-          <span>Back to Shop</span>
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+          <span class="hidden sm:inline">Back to Shop</span>
+          <span class="sm:hidden">Back</span>
         </button>
 
-        <button onclick="closeProductModal()" class="font-serif text-2xl sm:text-4xl font-bold tracking-[0.35em] text-obsidian uppercase whitespace-nowrap">
+        <button onclick="closeProductModal()" class="font-serif text-xl sm:text-4xl font-bold tracking-[0.2em] sm:tracking-[0.35em] text-obsidian uppercase whitespace-nowrap shrink-0">
           L A Y L
         </button>
 
-        <button 
-          onclick="openCartDrawer()" 
-          class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-obsidian text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors"
-        >
-          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
-          <span>Bag (<span id="productPageBagCount">0</span>)</span>
-        </button>
+        <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <button 
+            onclick="openWishlistDrawer()" 
+            aria-label="Open My Favorites"
+            class="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:border-obsidian hover:bg-white transition-colors"
+          >
+            <svg class="w-3.5 h-3.5 text-obsidian shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="hidden sm:inline">Favorites</span>
+            <span>(<span id="productPageWishlistCount">0</span>)</span>
+          </button>
+
+          <button 
+            onclick="openCartDrawer()" 
+            aria-label="Open Shopping Bag"
+            class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-5 py-2 sm:py-2.5 bg-obsidian text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:bg-zinc-800 transition-colors"
+          >
+            <i data-lucide="shopping-bag" class="w-3.5 h-3.5 shrink-0"></i>
+            <span>Bag (<span id="productPageBagCount">0</span>)</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -678,7 +726,7 @@
         <!-- Left Half (Large Visual: 7 cols on desktop) -->
         <div class="lg:col-span-7 bg-sand border-b lg:border-b-0 lg:border-r border-hairline flex items-center justify-center p-6 sm:p-12 md:p-16 relative">
           <div class="w-full max-w-2xl aspect-[3/4] bg-white border border-hairline relative overflow-hidden shadow-sm">
-            <img id="modalProductImage" src="" alt="Product Detail" class="w-full h-full object-cover object-center" />
+            <img id="modalProductImage" src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg" alt="Product Detail" class="w-full h-full object-cover object-center" />
             <div id="modalSaleTag" class="absolute top-5 left-5 hidden bg-sienna text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5">
               SALE
             </div>
@@ -755,14 +803,26 @@
                 </div>
               </div>
 
-              <button 
-                id="modalAddToBagBtn" 
-                onclick="modalAddToCart()" 
-                class="w-full py-5 bg-obsidian text-white text-xs font-bold uppercase tracking-[0.25em] hover:bg-zinc-800 transition-colors flex items-center justify-center gap-3 shadow-lg"
-              >
-                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                <span>ADD TO BAG</span>
-              </button>
+              <div class="flex items-stretch gap-3">
+                <button 
+                  id="modalAddToBagBtn" 
+                  onclick="modalAddToCart()" 
+                  class="flex-1 py-5 bg-obsidian text-white text-xs font-bold uppercase tracking-[0.25em] hover:bg-zinc-800 transition-colors flex items-center justify-center gap-3 shadow-lg"
+                >
+                  <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                  <span>ADD TO BAG</span>
+                </button>
+                <button 
+                  id="modalWishlistBtn"
+                  type="button"
+                  onclick="modalToggleWishlist()"
+                  aria-label="Save to Favorites"
+                  class="px-5 py-5 border border-hairline bg-sand text-obsidian hover:border-obsidian hover:bg-white transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest shrink-0"
+                >
+                  <svg id="modalWishlistIcon" class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  <span id="modalWishlistLabel" class="hidden sm:inline">Save</span>
+                </button>
+              </div>
             </div>
 
           </div>
@@ -773,18 +833,42 @@
   </div>
 
   <!-- ========================================================================= -->
+  <!-- MOBILE STICKY BOTTOM SHOPPING BAG BAR (VISIBLE ON PHONE WHEN BAG HAS ITEMS) -->
+  <!-- ========================================================================= -->
+  <div id="mobileStickyCartBar" class="fixed bottom-0 inset-x-0 z-40 sm:hidden hidden bg-obsidian text-white border-t border-hairlineDark shadow-2xl">
+    <button
+      type="button"
+      onclick="openCartDrawer()"
+      aria-label="View Shopping Bag and Checkout"
+      class="w-full px-4 py-3.5 flex items-center justify-between gap-3 text-left"
+    >
+      <div class="flex items-center gap-2.5">
+        <span class="w-7 h-7 bg-white text-obsidian flex items-center justify-center text-xs font-bold" id="mobileBarCartCount">0</span>
+        <div>
+          <span class="block text-[10px] uppercase tracking-widest text-zinc-300 font-bold">Shopping Bag</span>
+          <span id="mobileBarCartTotal" class="block text-xs font-bold text-white">EGP 0</span>
+        </div>
+      </div>
+      <span class="px-3.5 py-2 bg-white text-obsidian text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+        <span>View Bag</span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+      </span>
+    </button>
+  </div>
+
+  <!-- ========================================================================= -->
   <!-- RIGHT SLIDE-OUT SHOPPING BAG DRAWER                                       -->
   <!-- ========================================================================= -->
-  <div id="cartDrawer" class="fixed inset-0 z-[60] hidden">
+  <div id="cartDrawer" class="fixed inset-0 z-[70] hidden" role="dialog" aria-modal="true" aria-labelledby="cartDrawerHeading">
     <div class="drawer-backdrop fixed inset-0" onclick="closeCartDrawer()"></div>
     
-    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-alabaster border-l border-hairline shadow-2xl flex flex-col z-10">
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-alabaster border-l border-hairline shadow-2xl flex flex-col z-10 h-full max-h-screen">
       
       <!-- Drawer Header -->
-      <div class="p-6 border-b border-hairline flex items-center justify-between bg-sand">
+      <div class="p-5 sm:p-6 border-b border-hairline flex items-center justify-between bg-sand shrink-0">
         <div>
           <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block">YOUR BAG</span>
-          <h3 class="font-serif text-2xl font-bold uppercase text-obsidian">
+          <h3 id="cartDrawerHeading" class="font-serif text-xl sm:text-2xl font-bold uppercase text-obsidian">
             SHOPPING BAG (<span id="cartDrawerCount">0</span>)
           </h3>
         </div>
@@ -794,7 +878,7 @@
       </div>
 
       <!-- Drawer Items List -->
-      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 divide-y divide-hairline">
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 sm:p-6 divide-y divide-hairline">
         <!-- Rendered via updateCartUI() -->
       </div>
 
@@ -811,7 +895,7 @@
       </div>
 
       <!-- Drawer Footer & PROCEED TO CHECKOUT Button -->
-      <div id="cartFooterView" class="p-6 border-t border-hairline bg-sand space-y-4">
+      <div id="cartFooterView" class="p-5 sm:p-6 border-t border-hairline bg-sand space-y-4 shrink-0">
         <div class="space-y-1.5 text-xs">
           <div class="flex justify-between text-charcoal">
             <span>Subtotal:</span>
@@ -833,6 +917,74 @@
         >
           <span>Proceed to Checkout</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT SLIDE-OUT "MY FAVORITES" (WISHLIST) DRAWER                          -->
+  <!-- ========================================================================= -->
+  <div id="wishlistDrawer" class="fixed inset-0 z-[65] hidden" role="dialog" aria-modal="true" aria-labelledby="wishlistDrawerHeading">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeWishlistDrawer()"></div>
+    
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-alabaster border-l border-hairline shadow-2xl flex flex-col z-10">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-hairline flex items-center justify-between bg-sand">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block">SAVED SELECTION</span>
+          <h3 id="wishlistDrawerHeading" class="font-serif text-2xl font-bold uppercase text-obsidian">
+            MY FAVORITES (<span id="wishlistDrawerCount">0</span>)
+          </h3>
+        </div>
+        <button onclick="closeWishlistDrawer()" class="p-2 border border-hairline bg-alabaster hover:bg-obsidian hover:text-white transition-colors" aria-label="Close My Favorites">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Saved Items List -->
+      <div id="wishlistItemsContainer" class="flex-1 overflow-y-auto p-6 divide-y divide-hairline">
+        <!-- Rendered via updateWishlistUI() -->
+      </div>
+
+      <!-- Empty Favorites State -->
+      <div id="emptyWishlistView" class="hidden flex-1 flex flex-col items-center justify-center p-8 text-center">
+        <div class="w-14 h-14 border border-hairline bg-sand flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+        <p class="font-serif text-xl font-bold uppercase text-obsidian mb-2">Your Favorites List Is Empty</p>
+        <p class="text-xs text-charcoal mb-6 max-w-xs leading-relaxed">
+          Tap the heart icon on any Hermès, Louis Vuitton, or Burberry piece to curate your personal selection.
+        </p>
+        <button onclick="closeWishlistDrawer()" class="px-6 py-3 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+          Explore Collections
+        </button>
+      </div>
+
+      <!-- Drawer Footer Actions -->
+      <div id="wishlistFooterView" class="p-6 border-t border-hairline bg-sand space-y-3">
+        <div class="flex items-center justify-between text-xs text-charcoal pb-2 border-b border-hairline">
+          <span class="uppercase tracking-wider font-bold text-obsidian">Saved Pieces</span>
+          <span id="wishlistFooterSummary" class="font-bold text-obsidian">0 Pieces</span>
+        </div>
+
+        <button 
+          type="button"
+          onclick="addAllWishlistToCart()" 
+          class="w-full py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 shadow-sm"
+        >
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+          <span>Add All Available to Bag</span>
+        </button>
+
+        <button 
+          type="button"
+          onclick="clearWishlist()" 
+          class="w-full py-2.5 bg-alabaster border border-hairline text-charcoal hover:text-obsidian hover:border-obsidian text-[11px] font-bold uppercase tracking-widest transition-colors"
+        >
+          Clear Favorites
         </button>
       </div>
 
@@ -925,20 +1077,57 @@
                 </div>
               </div>
 
-              <!-- Governorate / City Dropdown -->
-              <div>
-                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">City / Governorate *</label>
-                <select id="checkoutCity" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
-                  <option value="New Cairo / Tagamoa">New Cairo / Tagamoa</option>
-                  <option value="Sheikh Zayed / 6th October">Sheikh Zayed / 6th October</option>
-                  <option value="Zamalek">Zamalek</option>
-                  <option value="Maadi">Maadi</option>
-                  <option value="Heliopolis">Heliopolis</option>
-                  <option value="Nasr City">Nasr City</option>
-                  <option value="Giza / Dokki / Mohandessin">Giza / Dokki / Mohandessin</option>
-                  <option value="Alexandria">Alexandria</option>
-                  <option value="Other Egyptian Governorate">Other Egyptian Governorate</option>
-                </select>
+              <!-- Governorate & City / District Cascading Dropdowns -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="checkoutGovernorate" class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Governorate (All Egypt) *</label>
+                  <select 
+                    id="checkoutGovernorate" 
+                    required 
+                    onchange="handleGovernorateChange()"
+                    class="w-full bg-sand border border-hairline px-4 py-3 text-xs text-obsidian focus:outline-none focus:border-obsidian"
+                  >
+                    <option value="" disabled>Select Governorate in Egypt...</option>
+                    <option value="Cairo" selected>Cairo</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="Dakahlia">Dakahlia</option>
+                    <option value="Red Sea">Red Sea</option>
+                    <option value="Beheira">Beheira</option>
+                    <option value="Fayoum">Fayoum</option>
+                    <option value="Gharbia">Gharbia</option>
+                    <option value="Ismailia">Ismailia</option>
+                    <option value="Menofia">Menofia</option>
+                    <option value="Minya">Minya</option>
+                    <option value="Qalyubia">Qalyubia</option>
+                    <option value="New Valley">New Valley</option>
+                    <option value="Suez">Suez</option>
+                    <option value="Aswan">Aswan</option>
+                    <option value="Assiut">Assiut</option>
+                    <option value="Beni Suef">Beni Suef</option>
+                    <option value="Port Said">Port Said</option>
+                    <option value="Damietta">Damietta</option>
+                    <option value="Sharkia">Sharkia</option>
+                    <option value="South Sinai">South Sinai</option>
+                    <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                    <option value="Matrouh">Matrouh</option>
+                    <option value="Luxor">Luxor</option>
+                    <option value="Qena">Qena</option>
+                    <option value="North Sinai">North Sinai</option>
+                    <option value="Sohag">Sohag</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="checkoutCity" class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">City / District *</label>
+                  <select 
+                    id="checkoutCity" 
+                    required 
+                    class="w-full bg-sand border border-hairline px-4 py-3 text-xs text-obsidian focus:outline-none focus:border-obsidian"
+                  >
+                    <!-- Populated dynamically via handleGovernorateChange() based on selected Governorate -->
+                  </select>
+                </div>
               </div>
 
               <!-- Full Street Address -->
@@ -954,21 +1143,9 @@
               </div>
             </div>
 
-            <!-- Section 3: Shipping Method -->
-            <div class="bg-white border border-hairline p-6 md:p-8 space-y-3">
-              <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-3 border-b border-hairline">3. Shipping Method</h3>
-              <div class="p-4 bg-sand border border-hairline flex items-center justify-between text-xs">
-                <div>
-                  <span class="font-bold text-obsidian block uppercase">White-Glove Private Courier</span>
-                  <span class="text-[11px] text-charcoal">Secure temperature-controlled transport with physical authenticity certification</span>
-                </div>
-                <span id="checkoutShippingFeeDisplay" class="font-bold text-obsidian">EGP 0</span>
-              </div>
-            </div>
-
-            <!-- Section 4: Payment Method (COD or InstaPay) -->
+            <!-- Section 3: Payment Method (COD or InstaPay) -->
             <div class="bg-white border border-hairline p-6 md:p-8 space-y-4">
-              <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-3 border-b border-hairline">4. Payment Method</h3>
+              <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-3 border-b border-hairline">3. Payment Method</h3>
               
               <div class="space-y-3">
                 <label class="flex items-start gap-3 p-4 bg-sand border border-hairline cursor-pointer hover:border-obsidian transition-colors">
@@ -1346,7 +1523,7 @@
               <!-- Preview -->
               <div class="flex items-center gap-3 pt-2">
                 <div class="w-16 h-20 bg-white border border-hairline overflow-hidden flex items-center justify-center">
-                  <img id="adminProdPhotoPreview" src="" alt="Preview" class="hidden w-full h-full object-cover">
+                  <img id="adminProdPhotoPreview" src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg" alt="Preview" class="hidden w-full h-full object-cover">
                   <span id="adminProdPhotoPlaceholder" class="text-[9px] text-charcoal uppercase">No Image</span>
                 </div>
                 <span class="text-[11px] text-charcoal">High-resolution preview for card and full-page product view.</span>
@@ -1468,7 +1645,7 @@
               </div>
 
               <div class="w-full h-32 bg-white border border-hairline overflow-hidden mt-2">
-                <img id="adminSiteHeroPreview" src="" alt="Hero Preview" class="w-full h-full object-cover">
+                <img id="adminSiteHeroPreview" src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg" alt="Hero Preview" class="w-full h-full object-cover">
               </div>
             </div>
 
@@ -1570,8 +1747,8 @@
   </div>
 
   <!-- Toast Notification Container -->
-  <div id="toastNotification" class="fixed bottom-6 right-6 z-[70] hidden bg-obsidian text-white border border-hairlineDark px-5 py-3.5 text-xs font-bold uppercase tracking-wider shadow-2xl flex items-center gap-3">
-    <i id="toastIcon" data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+  <div id="toastNotification" class="fixed top-20 left-3 right-3 sm:top-auto sm:left-auto sm:bottom-6 sm:right-6 z-[80] pointer-events-none hidden bg-obsidian text-white border border-hairlineDark px-4 py-3 sm:px-5 sm:py-3.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-2xl flex items-center gap-3">
+    <i id="toastIcon" data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
     <span id="toastMessage">Action completed successfully</span>
   </div>
 
@@ -1843,10 +2020,12 @@
     ];
 
     // Global Store State
+    const WISHLIST_STORAGE_KEY = 'layl_wishlist_v1';
     let products = [];
     let settings = { ...DEFAULT_SETTINGS };
     let orders = [];
     let cart = [];
+    let wishlist = [];
     let currentHouseFilter = 'All';
     let onSaleOnly = false;
     let currentSort = 'featured';
@@ -1894,9 +2073,20 @@
         cart = [];
       }
 
+      // Wishlist
+      try {
+        const savedWishlist = localStorage.getItem(WISHLIST_STORAGE_KEY);
+        const parsedWishlist = savedWishlist ? JSON.parse(savedWishlist) : [];
+        wishlist = Array.isArray(parsedWishlist) ? parsedWishlist.map(id => String(id)) : [];
+      } catch (e) {
+        wishlist = [];
+      }
+
       applySettingsToDOM();
+      handleGovernorateChange();
       renderProductGrid();
       updateCartUI();
+      updateWishlistUI();
 
       if (window.lucide) lucide.createIcons();
     }
@@ -1915,6 +2105,10 @@
 
     function saveCartToStorage() {
       try { localStorage.setItem('layl_cart', JSON.stringify(cart)); } catch (e) {}
+    }
+
+    function saveWishlistToStorage() {
+      try { localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishlist)); } catch (e) {}
     }
 
     function applySettingsToDOM() {
@@ -2050,6 +2244,7 @@
         const finalPrice = calculateDiscountedPrice(product.basePrice, product.discountPercent);
         const isOnSale = product.discountPercent > 0;
         const isSoldOut = product.stockStatus === 'sold_out';
+        const wishlisted = isProductWishlisted(product.id);
         const staggerDelayMs = (index % 3) * 90;
 
         return `
@@ -2081,14 +2276,29 @@
                   onerror="this.onerror=null; this.src='/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg';"
                 />
 
+                <!-- Sharp Architectural Wishlist Heart Toggle Button -->
+                <button
+                  type="button"
+                  onclick="window.toggleWishlist('${product.id}', event)"
+                  data-wishlist-btn="${product.id}"
+                  aria-label="${wishlisted ? `Remove ${product.title} from Favorites` : `Save ${product.title} to Favorites`}"
+                  aria-pressed="${wishlisted ? 'true' : 'false'}"
+                  title="${wishlisted ? 'Remove from Favorites' : 'Save to Favorites'}"
+                  class="absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center border transition-all ${wishlisted ? 'bg-obsidian text-white border-obsidian shadow-md' : 'bg-white/95 text-obsidian border-hairline hover:border-obsidian hover:bg-white shadow-sm'}"
+                >
+                  <svg class="w-4 h-4 pointer-events-none" viewBox="0 0 24 24" fill="${wishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                </button>
+
                 ${isSoldOut ? `
-                  <div class="absolute inset-0 bg-obsidian/60 flex items-center justify-center">
+                  <div class="absolute inset-0 bg-obsidian/60 flex items-center justify-center pointer-events-none">
                     <span class="bg-white text-obsidian text-xs font-bold uppercase tracking-widest px-4 py-2 border border-obsidian">
                       SOLD OUT
                     </span>
                   </div>
                 ` : `
-                  <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                     <span class="bg-white/95 text-obsidian text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 border border-hairline shadow-sm">
                       Inspect Piece
                     </span>
@@ -2276,8 +2486,12 @@
 
     function updateCartUI() {
       const countEl = document.getElementById('headerCartCount');
+      const menuCountEl = document.getElementById('menuCartCount');
       const drawerCountEl = document.getElementById('cartDrawerCount');
       const prodPageCountEl = document.getElementById('productPageBagCount');
+      const mobileBarEl = document.getElementById('mobileStickyCartBar');
+      const mobileBarCountEl = document.getElementById('mobileBarCartCount');
+      const mobileBarTotalEl = document.getElementById('mobileBarCartTotal');
       const itemsContainer = document.getElementById('cartItemsContainer');
       const emptyView = document.getElementById('emptyCartView');
       const footerView = document.getElementById('cartFooterView');
@@ -2294,21 +2508,35 @@
         totalAmount += price * item.quantity;
       });
 
-      if (countEl) countEl.textContent = totalCount;
-      if (drawerCountEl) drawerCountEl.textContent = totalCount;
-      if (prodPageCountEl) prodPageCountEl.textContent = totalCount;
+      const fee = settings.deliveryFee || 0;
+
+      if (countEl) countEl.textContent = String(totalCount);
+      if (menuCountEl) menuCountEl.textContent = String(totalCount);
+      if (drawerCountEl) drawerCountEl.textContent = String(totalCount);
+      if (prodPageCountEl) prodPageCountEl.textContent = String(totalCount);
+      if (mobileBarCountEl) mobileBarCountEl.textContent = String(totalCount);
+      if (mobileBarTotalEl) mobileBarTotalEl.textContent = formatEGP(totalAmount + fee);
+
+      if (mobileBarEl) {
+        if (totalCount > 0) {
+          mobileBarEl.classList.remove('hidden');
+        } else {
+          mobileBarEl.classList.add('hidden');
+        }
+      }
 
       if (cart.length === 0) {
         emptyView.classList.remove('hidden');
         footerView.classList.add('hidden');
+        itemsContainer.classList.add('hidden');
         itemsContainer.innerHTML = '';
         return;
       }
 
       emptyView.classList.add('hidden');
       footerView.classList.remove('hidden');
+      itemsContainer.classList.remove('hidden');
 
-      const fee = settings.deliveryFee || 0;
       subtotalEl.textContent = formatEGP(totalAmount);
       deliveryFeeEl.textContent = fee === 0 ? 'COMPLIMENTARY' : formatEGP(fee);
       totalEl.textContent = formatEGP(totalAmount + fee);
@@ -2345,13 +2573,22 @@
     }
 
     function openCartDrawer() {
+      closeWishlistDrawer();
+      closeMenuDrawer();
       updateCartUI();
       document.getElementById('cartDrawer').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
     }
 
     function closeCartDrawer() {
       document.getElementById('cartDrawer').classList.add('hidden');
     }
+
+    window.openCartDrawer = openCartDrawer;
+    window.closeCartDrawer = closeCartDrawer;
+    window.addToCart = addToCart;
+    window.updateCartQuantity = updateCartQuantity;
+    window.removeFromCart = removeFromCart;
 
     /**
      * FULL-SCREEN DEDICATED PRODUCT PAGE CONTROLLER
@@ -2421,6 +2658,7 @@
       }
 
       updateCartUI();
+      updateModalWishlistBtnState(prod.id);
       modal.classList.remove('hidden');
       modal.scrollTo({ top: 0, behavior: 'instant' });
       if (window.lucide) lucide.createIcons();
@@ -2443,12 +2681,552 @@
       }
     }
 
+    function modalToggleWishlist() {
+      if (selectedQuickViewProduct) {
+        window.toggleWishlist(selectedQuickViewProduct.id);
+      }
+    }
+
+    function updateModalWishlistBtnState(productId) {
+      const btn = document.getElementById('modalWishlistBtn');
+      const icon = document.getElementById('modalWishlistIcon');
+      const label = document.getElementById('modalWishlistLabel');
+      if (!btn || !icon || !label) return;
+
+      const saved = isProductWishlisted(productId);
+      btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      if (saved) {
+        btn.className = 'px-5 py-5 border border-obsidian bg-obsidian text-white hover:bg-zinc-800 transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest shrink-0';
+        icon.setAttribute('fill', 'currentColor');
+        label.textContent = 'Saved';
+      } else {
+        btn.className = 'px-5 py-5 border border-hairline bg-sand text-obsidian hover:border-obsidian hover:bg-white transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest shrink-0';
+        icon.setAttribute('fill', 'none');
+        label.textContent = 'Save';
+      }
+    }
+
+    /**
+     * MY FAVORITES (WISHLIST) DRAWER & STATE CONTROLLER
+     */
+    function isProductWishlisted(productId) {
+      const targetId = String(productId);
+      return wishlist.some(id => String(id) === targetId);
+    }
+
+    window.toggleWishlist = function(productId, event) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+
+      const targetId = String(productId);
+      const prod = products.find(p => String(p.id) === targetId);
+      const exists = isProductWishlisted(targetId);
+
+      if (exists) {
+        wishlist = wishlist.filter(id => String(id) !== targetId);
+        showToast(prod ? `Removed "${prod.title}" from Favorites` : 'Removed from Favorites');
+      } else {
+        wishlist.push(targetId);
+        showToast(prod ? `Saved "${prod.title}" to Favorites` : 'Saved to Favorites');
+      }
+
+      saveWishlistToStorage();
+      syncProductCardWishlistButtons();
+      updateWishlistUI();
+      if (selectedQuickViewProduct && String(selectedQuickViewProduct.id) === targetId) {
+        updateModalWishlistBtnState(targetId);
+      }
+    };
+
+    function syncProductCardWishlistButtons() {
+      const buttons = document.querySelectorAll('[data-wishlist-btn]');
+      buttons.forEach(btn => {
+        const pid = btn.getAttribute('data-wishlist-btn');
+        const prod = products.find(p => String(p.id) === String(pid));
+        const saved = isProductWishlisted(pid);
+        btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+        btn.setAttribute('aria-label', saved ? `Remove ${prod ? prod.title : 'item'} from Favorites` : `Save ${prod ? prod.title : 'item'} to Favorites`);
+        btn.setAttribute('title', saved ? 'Remove from Favorites' : 'Save to Favorites');
+        btn.className = `absolute top-3 right-3 z-10 w-10 h-10 flex items-center justify-center border transition-all ${saved ? 'bg-obsidian text-white border-obsidian shadow-md' : 'bg-white/95 text-obsidian border-hairline hover:border-obsidian hover:bg-white shadow-sm'}`;
+        const svg = btn.querySelector('svg');
+        if (svg) {
+          svg.setAttribute('fill', saved ? 'currentColor' : 'none');
+        }
+      });
+    }
+
+    function getSavedWishlistProducts() {
+      return wishlist
+        .map(id => products.find(p => String(p.id) === String(id)))
+        .filter(Boolean);
+    }
+
+    function updateWishlistUI() {
+      const savedProducts = getSavedWishlistProducts();
+      const count = savedProducts.length;
+
+      const headerCountEl = document.getElementById('headerWishlistCount');
+      const menuCountEl = document.getElementById('menuWishlistCount');
+      const prodPageCountEl = document.getElementById('productPageWishlistCount');
+      const drawerCountEl = document.getElementById('wishlistDrawerCount');
+      const footerSummaryEl = document.getElementById('wishlistFooterSummary');
+      const itemsContainer = document.getElementById('wishlistItemsContainer');
+      const emptyView = document.getElementById('emptyWishlistView');
+      const footerView = document.getElementById('wishlistFooterView');
+
+      if (headerCountEl) headerCountEl.textContent = String(count);
+      if (menuCountEl) menuCountEl.textContent = String(count);
+      if (prodPageCountEl) prodPageCountEl.textContent = String(count);
+      if (drawerCountEl) drawerCountEl.textContent = String(count);
+      if (footerSummaryEl) footerSummaryEl.textContent = `${count} ${count === 1 ? 'Piece' : 'Pieces'}`;
+
+      if (!itemsContainer || !emptyView || !footerView) return;
+
+      if (count === 0) {
+        emptyView.classList.remove('hidden');
+        footerView.classList.add('hidden');
+        itemsContainer.classList.add('hidden');
+        itemsContainer.innerHTML = '';
+        return;
+      }
+
+      emptyView.classList.add('hidden');
+      footerView.classList.remove('hidden');
+      itemsContainer.classList.remove('hidden');
+
+      itemsContainer.innerHTML = savedProducts.map(prod => {
+        const finalPrice = calculateDiscountedPrice(prod.basePrice, prod.discountPercent);
+        const isOnSale = prod.discountPercent > 0;
+        const isSoldOut = prod.stockStatus === 'sold_out';
+
+        return `
+          <div class="py-4 flex gap-4 items-start" data-wishlist-item="${prod.id}">
+            <button
+              type="button"
+              onclick="closeWishlistDrawer(); quickViewProduct('${prod.id}');"
+              class="w-20 aspect-[3/4] bg-sand border border-hairline overflow-hidden shrink-0 relative group"
+              aria-label="Inspect ${prod.title}"
+            >
+              <img src="${prod.image}" alt="${prod.title}" class="w-full h-full object-cover ${isSoldOut ? 'opacity-50 grayscale' : ''}">
+            </button>
+            <div class="flex-1 flex flex-col justify-between min-h-[6rem]">
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block">${prod.house}</span>
+                  ${isOnSale ? `<span class="bg-sienna text-white text-[9px] font-bold px-1.5 py-0.5 uppercase tracking-widest">-${prod.discountPercent}%</span>` : ''}
+                </div>
+                <button
+                  type="button"
+                  onclick="closeWishlistDrawer(); quickViewProduct('${prod.id}');"
+                  class="font-serif text-sm font-bold text-obsidian uppercase leading-tight text-left hover:underline mt-0.5 block"
+                >
+                  ${prod.title}
+                </button>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-xs font-bold text-obsidian">${formatEGP(finalPrice)}</span>
+                  ${isOnSale ? `<span class="text-[10px] line-through text-charcoal">${formatEGP(prod.basePrice)}</span>` : ''}
+                </div>
+                <span class="text-[10px] text-charcoal block mt-0.5">${prod.material} • ${prod.dimensions}</span>
+              </div>
+
+              <div class="flex items-center justify-between gap-2 mt-3 pt-2.5 border-t border-hairline/60">
+                <button
+                  type="button"
+                  onclick="moveWishlistItemToCart('${prod.id}')"
+                  ${isSoldOut ? 'disabled' : ''}
+                  class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest ${isSoldOut ? 'bg-zinc-300 text-zinc-500 cursor-not-allowed' : 'bg-obsidian text-white hover:bg-zinc-800'} transition-colors"
+                >
+                  ${isSoldOut ? 'Sold Out' : 'Add to Bag'}
+                </button>
+                <button
+                  type="button"
+                  onclick="window.toggleWishlist('${prod.id}', event)"
+                  class="text-[11px] text-charcoal hover:text-red-700 font-semibold underline"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function openWishlistDrawer() {
+      closeCartDrawer();
+      updateWishlistUI();
+      document.getElementById('wishlistDrawer').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeWishlistDrawer() {
+      document.getElementById('wishlistDrawer').classList.add('hidden');
+    }
+
+    function moveWishlistItemToCart(productId) {
+      const prod = products.find(p => String(p.id) === String(productId));
+      if (!prod || prod.stockStatus === 'sold_out') return;
+      closeWishlistDrawer();
+      addToCart(prod.id, 1);
+    }
+
+    function addAllWishlistToCart() {
+      const availableItems = getSavedWishlistProducts().filter(p => p.stockStatus !== 'sold_out');
+      if (availableItems.length === 0) {
+        showToast('No in-stock pieces available to add');
+        return;
+      }
+
+      availableItems.forEach(prod => {
+        const existing = cart.find(item => String(item.product.id) === String(prod.id));
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ product: prod, quantity: 1 });
+        }
+      });
+
+      saveCartToStorage();
+      updateCartUI();
+      closeWishlistDrawer();
+      showToast(`Added ${availableItems.length} ${availableItems.length === 1 ? 'piece' : 'pieces'} from Favorites to Bag`);
+      openCartDrawer();
+    }
+
+    function clearWishlist() {
+      wishlist = [];
+      saveWishlistToStorage();
+      syncProductCardWishlistButtons();
+      updateWishlistUI();
+      if (selectedQuickViewProduct) {
+        updateModalWishlistBtnState(selectedQuickViewProduct.id);
+      }
+      showToast('Cleared My Favorites');
+    }
+
+    /**
+     * ALL 27 EGYPTIAN GOVERNORATES & THEIR CITIES / DISTRICTS
+     */
+    const EGYPT_GOVERNORATES_CITIES = {
+      'Cairo': [
+        'New Cairo / Tagamoa',
+        'Zamalek',
+        'Maadi',
+        'Heliopolis',
+        'Nasr City',
+        'Downtown Cairo',
+        'Garden City',
+        'El Rehab',
+        'Madinaty',
+        'El Shorouk',
+        'New Administrative Capital',
+        'Katameya',
+        'Mokattam',
+        'El Manial',
+        'Shubra',
+        'Ain Shams',
+        'Obour City',
+        'Badr City',
+        'Helwan',
+        '15th of May City'
+      ],
+      'Giza': [
+        'Sheikh Zayed',
+        '6th of October City',
+        'Dokki',
+        'Mohandessin',
+        'Agouza',
+        'Haram',
+        'Faisal',
+        'Hadayek El Ahram',
+        'Smart Village',
+        'Imbaba',
+        'Kerdasa',
+        'El Warraq',
+        'Hawamdiya',
+        'Badrashein'
+      ],
+      'Alexandria': [
+        'Smouha',
+        'Kafr Abdo',
+        'Gleem',
+        'San Stefano',
+        'Stanley',
+        'Sidi Gaber',
+        'Roushdy',
+        'Laurent',
+        'Miami',
+        'Montaza',
+        'Sporting',
+        'Camp Caesar',
+        'Mandara',
+        'Mansheya',
+        'Agami',
+        'Borg El Arab'
+      ],
+      'Dakahlia': [
+        'Mansoura',
+        'Talkha',
+        'Mit Ghamr',
+        'Senbellawein',
+        'Belqas',
+        'Sherbin',
+        'Gamasa',
+        'Manzala',
+        'Dekernes',
+        'Aga'
+      ],
+      'Red Sea': [
+        'El Gouna',
+        'Hurghada',
+        'Sahl Hasheesh',
+        'Soma Bay',
+        'Makadi Bay',
+        'Safaga',
+        'Marsa Alam',
+        'El Quseir',
+        'Ras Ghareb'
+      ],
+      'Beheira': [
+        'Damanhour',
+        'Kafr El Dawwar',
+        'Rashid (Rosetta)',
+        'Edko',
+        'Wadi El Natrun',
+        'Abu Hummus',
+        'Kom Hamada',
+        'Etay El Baroud'
+      ],
+      'Fayoum': [
+        'Fayoum City',
+        'New Fayoum',
+        'Tunis Village',
+        'Ibshway',
+        'Tamiya',
+        'Sennuris',
+        'Etsa'
+      ],
+      'Gharbia': [
+        'Tanta',
+        'El Mahalla El Kubra',
+        'Kafr El Zayat',
+        'Zefta',
+        'Samannoud',
+        'Basyoun',
+        'Santa',
+        'Qutour'
+      ],
+      'Ismailia': [
+        'Ismailia City',
+        'Fayed',
+        'Qantara West',
+        'Qantara East',
+        'Tell El Kebir',
+        'Abu Suwir',
+        'Kasassin'
+      ],
+      'Menofia': [
+        'Shebin El Kom',
+        'Sadat City',
+        'Menouf',
+        'Ashmoun',
+        'Quesna',
+        'Bagour',
+        'Berket El Sabaa',
+        'Tala'
+      ],
+      'Minya': [
+        'Minya City',
+        'New Minya',
+        'Mallawi',
+        'Samalut',
+        'Maghagha',
+        'Beni Mazar',
+        'Mattay',
+        'Abu Qurqas',
+        'Deir Mawas'
+      ],
+      'Qalyubia': [
+        'Banha',
+        'Obour',
+        'Shubra El Kheima',
+        'Qalyub',
+        'Khanka',
+        'Qanater El Khayreya',
+        'Toukh',
+        'Kafr Shukr',
+        'Shebin El Qanater'
+      ],
+      'New Valley': [
+        'Kharga',
+        'Dakhla',
+        'Farafra',
+        'Baris',
+        'Balat'
+      ],
+      'Suez': [
+        'Suez City',
+        'Ain Sokhna',
+        'Port Tawfiq',
+        'Arbaeen',
+        'Ataqah',
+        'Faisal District'
+      ],
+      'Aswan': [
+        'Aswan City',
+        'New Aswan',
+        'Kom Ombo',
+        'Edfu',
+        'Daraw',
+        'Abu Simbel',
+        'Nasr El Nuba'
+      ],
+      'Assiut': [
+        'Assiut City',
+        'New Assiut',
+        'Dairut',
+        'Manfalut',
+        'Qusiya',
+        'Abnub',
+        'Abu Tig',
+        'El Badari'
+      ],
+      'Beni Suef': [
+        'Beni Suef City',
+        'New Beni Suef',
+        'El Wasta',
+        'Nasser',
+        'Beba',
+        'Ehnasia',
+        'Fashn',
+        'Somosta'
+      ],
+      'Port Said': [
+        'Port Said City',
+        'Port Fouad',
+        'Al Sharq',
+        'El Arab',
+        'El Manakh',
+        'El Zohour',
+        'El Dawahy'
+      ],
+      'Damietta': [
+        'Damietta City',
+        'New Damietta',
+        'Ras El Bar',
+        'Faraskour',
+        'Kafr Saad',
+        'Zarqa',
+        'Ezbet El Borg'
+      ],
+      'Sharkia': [
+        'Zagazig',
+        '10th of Ramadan City',
+        'Belbeis',
+        'Minya El Qamh',
+        'Fakous',
+        'Abu Hammad',
+        'Hehya',
+        'Kafr Saqr'
+      ],
+      'South Sinai': [
+        'Sharm El Sheikh',
+        'Dahab',
+        'Ras Sedr',
+        'El Tor',
+        'Nuweiba',
+        'Taba',
+        'Saint Catherine'
+      ],
+      'Kafr El Sheikh': [
+        'Kafr El Sheikh City',
+        'Desouk',
+        'Baltim',
+        'Fouh',
+        'Metoubes',
+        'Biyala',
+        'Sidi Salem',
+        'Hamoul'
+      ],
+      'Matrouh': [
+        'Marsa Matrouh',
+        'North Coast (Sahel)',
+        'New Alamein',
+        'El Alamein',
+        'Sidi Abdel Rahman / Marassi',
+        'Hacienda / Ras El Hekma',
+        'El Dabaa',
+        'El Hammam',
+        'Siwa'
+      ],
+      'Luxor': [
+        'Luxor City',
+        'East Bank',
+        'West Bank',
+        'Karnak',
+        'Esna',
+        'Armant',
+        'El Tod',
+        'El Ziniya'
+      ],
+      'Qena': [
+        'Qena City',
+        'New Qena',
+        'Nag Hammadi',
+        'Qous',
+        'Dishna',
+        'Farshout',
+        'Abu Tesht'
+      ],
+      'North Sinai': [
+        'El Arish',
+        'Bir al-Abd',
+        'Sheikh Zuweid',
+        'Nakhl',
+        'Hasana'
+      ],
+      'Sohag': [
+        'Sohag City',
+        'New Sohag',
+        'Akhmim',
+        'Girga',
+        'Tahta',
+        'Tima',
+        'El Balyana',
+        'El Maragha'
+      ]
+    };
+
+    function handleGovernorateChange() {
+      const govSelect = document.getElementById('checkoutGovernorate');
+      const citySelect = document.getElementById('checkoutCity');
+      if (!govSelect || !citySelect) return;
+
+      const selectedGov = govSelect.value || 'Cairo';
+      const cities = EGYPT_GOVERNORATES_CITIES[selectedGov] || [];
+
+      citySelect.innerHTML = [
+        `<option value="" disabled selected>Select City / District in ${selectedGov}...</option>`,
+        ...cities.map(c => `<option value="${c}">${c}</option>`)
+      ].join('');
+    }
+
     /**
      * SHOPIFY-STYLE DIRECT CHECKOUT CONTROLLER
      */
     function proceedToShopifyCheckout() {
       if (cart.length === 0) return;
       closeCartDrawer();
+
+      const govSelect = document.getElementById('checkoutGovernorate');
+      const citySelect = document.getElementById('checkoutCity');
+      if (govSelect && citySelect && citySelect.options.length === 0) {
+        handleGovernorateChange();
+      }
 
       renderCheckoutSummary();
       document.getElementById('shopifyCheckoutView').classList.remove('hidden');
@@ -2475,10 +3253,10 @@
       const deliveryFee = settings.deliveryFee || 0;
       const total = subtotal + deliveryFee;
 
-      subtotalEl.textContent = formatEGP(subtotal);
-      shippingEl.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
-      shippingDisplay.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
-      totalEl.textContent = formatEGP(total);
+      if (subtotalEl) subtotalEl.textContent = formatEGP(subtotal);
+      if (shippingEl) shippingEl.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
+      if (shippingDisplay) shippingDisplay.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
+      if (totalEl) totalEl.textContent = formatEGP(total);
 
       listEl.innerHTML = cart.map(item => {
         const unitPrice = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
@@ -2511,7 +3289,11 @@
       const backupPhone = document.getElementById('checkoutBackupPhone').value.trim();
       const firstName = document.getElementById('checkoutFirstName').value.trim();
       const lastName = document.getElementById('checkoutLastName').value.trim();
-      const city = document.getElementById('checkoutCity').value;
+      const governorateEl = document.getElementById('checkoutGovernorate');
+      const cityEl = document.getElementById('checkoutCity');
+      const governorate = governorateEl ? governorateEl.value : 'Cairo';
+      const selectedCity = cityEl ? cityEl.value : '';
+      const city = selectedCity ? `${governorate} — ${selectedCity}` : governorate;
       const street = document.getElementById('checkoutStreet').value.trim();
       const landmark = document.getElementById('checkoutLandmark').value.trim();
       const paymentMethod = document.querySelector('input[name="checkoutPayment"]:checked').value;
@@ -2540,6 +3322,8 @@
           lastName,
           primaryPhone,
           backupPhone,
+          governorate,
+          district: selectedCity,
           city,
           address: street,
           landmark
@@ -3267,6 +4051,10 @@
         `const DEFAULT_ORDERS = ${ordersJson};`
       );
 
+      // Remove any Vite dev-server WebSocket client scripts when exporting standalone HTML
+      htmlContent = htmlContent.replace(/<script[^>]*src="\/@vite\/client"[^>]*><\/script>/gi, '');
+      htmlContent = htmlContent.replace(/<script[^>]*src="\/src\/main\.tsx"[^>]*><\/script>/gi, '');
+
       const blob = new Blob(['<!DOCTYPE html>\n' + htmlContent], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const dl = document.createElement('a');
@@ -3307,8 +4095,14 @@
       }, 3500);
     }
 
-    window.addEventListener('DOMContentLoaded', initStore);
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', initStore);
+    } else {
+      initStore();
+    }
   </script>
 
+  <div id="root" class="hidden" aria-hidden="true"></div>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

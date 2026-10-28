@@ -9,11 +9,14 @@ import {
   applyStorewideSale,
   toggleWishlistItem,
   isProductInWishlist,
+  resolveWishlistProducts,
   findOrder,
   updateOrderStatus,
   calculateRevealStaggerMs,
   deleteProductById,
   updateProductById,
+  EGYPT_GOVERNORATES_CITIES,
+  getCitiesForGovernorate,
   Product,
   CartItem,
   Order
@@ -138,18 +141,24 @@ test('applyStorewideSale applies sale percentage across all or specific houses',
   assert.equal(burberryOnly[1].discountPercent, 20); // unchanged
 });
 
-test('wishlist functions toggle and query product presence', () => {
+test('wishlist functions toggle, query, and resolve saved products in order', () => {
   let wishlist: string[] = [];
   assert.equal(isProductInWishlist(wishlist, '1'), false);
 
   wishlist = toggleWishlistItem(wishlist, '1');
   assert.equal(isProductInWishlist(wishlist, '1'), true);
+  assert.equal(isProductInWishlist(wishlist, 1), true);
   assert.deepEqual(wishlist, ['1']);
 
   wishlist = toggleWishlistItem(wishlist, '2');
   assert.deepEqual(wishlist, ['1', '2']);
 
-  wishlist = toggleWishlistItem(wishlist, '1');
+  const resolved = resolveWishlistProducts(mockProducts, wishlist);
+  assert.equal(resolved.length, 2);
+  assert.equal(resolved[0].title, 'Vintage Check Silk Scarf');
+  assert.equal(resolved[1].title, 'H-Drapé Pure Silk Shawl');
+
+  wishlist = toggleWishlistItem(wishlist, 1);
   assert.equal(isProductInWishlist(wishlist, '1'), false);
   assert.deepEqual(wishlist, ['2']);
 });
@@ -219,6 +228,25 @@ test('deleteProductById and updateProductById match string and numeric IDs accur
   assert.equal(updatedItem.title, 'Hermès Updated Shawl');
   assert.equal(updatedItem.basePrice, 42000);
 });
+
+test('EGYPT_GOVERNORATES_CITIES covers all 27 Egyptian governorates and resolves cities', () => {
+  const govs = Object.keys(EGYPT_GOVERNORATES_CITIES);
+  assert.equal(govs.length, 27);
+  assert.ok(govs.includes('Cairo'));
+  assert.ok(govs.includes('Giza'));
+  assert.ok(govs.includes('Alexandria'));
+  assert.ok(govs.includes('Luxor'));
+  assert.ok(govs.includes('Aswan'));
+
+  const cairoCities = getCitiesForGovernorate('Cairo');
+  assert.ok(cairoCities.includes('Zamalek'));
+  assert.ok(cairoCities.includes('New Cairo / Tagamoa'));
+
+  const gizaCities = getCitiesForGovernorate('Giza');
+  assert.ok(gizaCities.includes('Sheikh Zayed'));
+  assert.equal(getCitiesForGovernorate('Unknown').length, 0);
+});
+
 
 
 
