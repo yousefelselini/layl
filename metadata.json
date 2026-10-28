@@ -1,0 +1,6 @@
+{
+  "name": "LAYL | Luxury Scarf Maison Cairo",
+  "description": "Exclusive Egyptian luxury maison importing 100% authenticated heritage headscarves from Hermès, Louis Vuitton, and Burberry with white-glove courier delivery across Cairo and Egypt.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

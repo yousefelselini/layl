@@ -1,0 +1,3314 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAYL | Luxury Scarf Maison Cairo</title>
+  <meta name="description" content="Exclusive Egyptian luxury maison importing 100% authenticated heritage headscarves from Hermès, Louis Vuitton, and Burberry with white-glove courier delivery across Cairo and Egypt." />
+  <meta property="og:title" content="LAYL | Luxury Scarf Maison Cairo" />
+  <meta property="og:description" content="100% authentic luxury headscarves from Hermès, Louis Vuitton, and Burberry. Curated for Cairo." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN with custom config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#F8F6F2',
+            sand: '#EFECE6',
+            obsidian: '#111111',
+            charcoal: '#66625B',
+            hairline: '#E2DDD5',
+            hairlineDark: '#262626',
+            bronze: '#7A5C3E',
+            sienna: '#B84A27',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            'widest-luxury': '0.25em',
+            'editorial': '0.35em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Strict Luxury Rule: ZERO rounded corners anywhere */
+    *, *::before, *::after {
+      border-radius: 0px !important;
+    }
+
+    body {
+      background-color: #F8F6F2;
+      color: #111111;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom sharp scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #EFECE6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #111111;
+    }
+
+    /* Smooth drawer & modal backdrop transitions */
+    .drawer-backdrop {
+      background-color: rgba(17, 17, 17, 0.7);
+      backdrop-filter: blur(3px);
+    }
+
+    /* Image zoom hover effect */
+    .zoom-container {
+      overflow: hidden;
+    }
+    .zoom-container img {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .zoom-container:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Editorial scroll fade-in reveal for catalog product cards */
+    .product-card-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+      will-change: opacity, transform;
+    }
+    .product-card-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .product-card-reveal {
+        opacity: 1;
+        transform: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-obsidian selection:text-white text-obsidian bg-alabaster">
+
+  <!-- ========================================================================= -->
+  <!-- 1. TOP ANNOUNCEMENT BAR                                                   -->
+  <!-- ========================================================================= -->
+  <div id="announcementBar" class="bg-obsidian text-white border-b border-hairlineDark py-3 px-6 text-center transition-colors">
+    <div class="max-w-7xl mx-auto flex items-center justify-between text-[11px] md:text-xs tracking-widest uppercase font-semibold">
+      <span class="hidden md:inline-block text-zinc-400">LAYL MAISON • CAIRO</span>
+      <p id="announcementText" class="mx-auto truncate px-4 font-medium">
+        COMPLIMENTARY PRIVATE COURIER DELIVERY ACROSS CAIRO & ALL OVER EGYPT | 100% AUTHENTICATED GLOBAL IMPORTS
+      </p>
+      <span class="hidden md:inline-block text-zinc-400">100% AUTHENTIC</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. CLEAN HEADER (3 ZONES: [ ☰ SHOP BRANDS ] — [ L A Y L ] — [ TRACK / BAG ]) -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-alabaster/95 backdrop-blur-md border-b border-hairline">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+      <div class="h-20 sm:h-24 flex items-center justify-between gap-2 sm:gap-6">
+        
+        <!-- Left Zone: [ ☰ SHOP BRANDS ] Button -->
+        <div class="flex items-center shrink-0">
+          <button 
+            id="openMenuBtn"
+            onclick="openMenuDrawer()" 
+            aria-label="Shop Brands Menu"
+            class="flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-wider sm:tracking-widest hover:border-obsidian hover:bg-white transition-all shadow-sm"
+          >
+            <i data-lucide="menu" class="w-4 h-4 text-obsidian shrink-0"></i>
+            <span>Shop Brands</span>
+          </button>
+        </div>
+
+        <!-- Center Zone: Bold L A Y L Wordmark (Clicking resets to home) -->
+        <div class="text-center px-1 sm:px-2 shrink-0">
+          <a href="#" onclick="resetToHome(event)" class="inline-block group py-1" aria-label="LAYL Home">
+            <span class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold tracking-[0.25em] sm:tracking-[0.4em] text-obsidian block uppercase leading-none whitespace-nowrap">
+              LAYL
+            </span>
+            <span class="block text-[8px] sm:text-[9px] uppercase tracking-[0.25em] sm:tracking-[0.45em] text-charcoal mt-1 sm:mt-1.5 font-semibold whitespace-nowrap">
+              Cairo • Global Imports
+            </span>
+          </a>
+        </div>
+
+        <!-- Right Zone: [ TRACK ORDER ] & [ BAG (0) ] (No visible admin button) -->
+        <div class="flex items-center gap-2 sm:gap-3 md:gap-4 shrink-0">
+          <!-- Track Order Button -->
+          <button 
+            onclick="openTrackOrderModal()" 
+            aria-label="Track Order"
+            class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 md:px-4 py-2 sm:py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-wider hover:border-obsidian hover:bg-white transition-all"
+          >
+            <i data-lucide="truck" class="w-3.5 h-3.5 text-charcoal shrink-0"></i>
+            <span class="hidden md:inline">Track Order</span>
+          </button>
+
+          <!-- Shopping Bag Button -->
+          <button 
+            onclick="openCartDrawer()" 
+            aria-label="Shopping Bag"
+            class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-obsidian text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors shadow-sm"
+          >
+            <i data-lucide="shopping-bag" class="w-3.5 h-3.5 shrink-0"></i>
+            <span>Bag</span>
+            <span id="headerCartCount" class="bg-white text-obsidian px-1.5 py-0.2 text-[10px] font-bold min-w-4 text-center">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- LEFT SLIDE-OUT MENU ("SHOP BRANDS" DRAWER) + HIDDEN BOTTOM-LEFT KEYPAD    -->
+  <!-- ========================================================================= -->
+  <div id="menuDrawer" class="fixed inset-0 z-50 hidden">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeMenuDrawer()"></div>
+
+    <div class="fixed top-0 left-0 bottom-0 w-80 md:w-96 bg-alabaster border-r border-hairline shadow-2xl flex flex-col justify-between z-10 p-8 sm:p-10">
+      
+      <!-- Menu Header -->
+      <div>
+        <div class="flex items-center justify-between pb-8 border-b border-hairline mb-8">
+          <div>
+            <span class="font-serif text-2xl font-bold tracking-[0.25em] block uppercase text-obsidian">LAYL</span>
+            <span class="text-[9px] uppercase tracking-widest text-charcoal font-semibold">Collections Menu</span>
+          </div>
+          <button onclick="closeMenuDrawer()" class="p-2 border border-hairline hover:bg-obsidian hover:text-white transition-colors" aria-label="Close menu">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Links (Spacious Editorial Typography) -->
+        <nav class="space-y-6 text-sm uppercase font-bold tracking-widest text-obsidian">
+          <div>
+            <button onclick="setHouseFilter('All'); closeMenuDrawer();" class="w-full text-left py-2 hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span>Shop All</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="setHouseFilter('Hermès'); closeMenuDrawer();" class="w-full text-left py-2 hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span>Hermès</span>
+              <span class="text-[10px] text-charcoal uppercase font-medium">France</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="setHouseFilter('Louis Vuitton'); closeMenuDrawer();" class="w-full text-left py-2 hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span>Louis Vuitton</span>
+              <span class="text-[10px] text-charcoal uppercase font-medium">France</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="setHouseFilter('Burberry'); closeMenuDrawer();" class="w-full text-left py-2 hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span>Burberry</span>
+              <span class="text-[10px] text-charcoal uppercase font-medium">England</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="toggleSaleFilterOnly(); closeMenuDrawer();" class="w-full text-left py-2 text-sienna hover:translate-x-1.5 transition-transform flex items-center justify-between group font-extrabold">
+              <span>Sale</span>
+              <span class="text-[10px] uppercase font-bold bg-sienna/10 px-2 py-0.5">Special</span>
+            </button>
+          </div>
+          <div class="pt-2 border-t border-hairline/60">
+            <button onclick="closeMenuDrawer(); openTrackOrderModal();" class="w-full text-left py-2 text-charcoal hover:text-obsidian hover:translate-x-1.5 transition-transform flex items-center justify-between group">
+              <span class="flex items-center gap-2">
+                <i data-lucide="truck" class="w-4 h-4"></i>
+                <span>Track My Order</span>
+              </span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Menu Drawer Footer: Customer Support Line + HIDDEN BOTTOM-LEFT KEYPAD -->
+      <div class="pt-8 border-t border-hairline flex items-end justify-between">
+        
+        <!-- Hidden Keypad Icon Button (CRITICAL: Very bottom-left, NO text label, PIN is 0000) -->
+        <button 
+          id="hiddenAdminKeypadBtn"
+          onclick="openKeypadModal()" 
+          class="p-2.5 text-charcoal/30 hover:text-obsidian border border-transparent hover:border-hairline transition-colors"
+          aria-label="Portal access"
+          title="Access"
+        >
+          <i data-lucide="grid" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Customer Support Number -->
+        <div class="text-right">
+          <span class="block text-[9px] uppercase tracking-widest text-charcoal font-semibold mb-1">Customer Support</span>
+          <span id="supportPhoneDisplay" class="text-xs font-mono font-bold text-obsidian tracking-wider block">
+            +20 100 123 4567
+          </span>
+          <span class="text-[9px] text-charcoal/80 block mt-0.5">Inquiries & Private Viewing</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- HIDDEN KEYPAD MODAL (NO HINT OF 0000 ANYWHERE IN THE UI)                  -->
+  <!-- ========================================================================= -->
+  <div id="keypadModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeKeypadModal()"></div>
+    <div class="relative bg-alabaster border border-hairline w-full max-w-xs p-8 text-center z-10 shadow-2xl">
+      <button onclick="closeKeypadModal()" class="absolute top-4 right-4 p-2 text-charcoal hover:text-obsidian" aria-label="Close">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="w-10 h-10 bg-obsidian text-white flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="lock" class="w-4 h-4"></i>
+      </div>
+      <h4 class="font-serif text-xl font-bold uppercase text-obsidian mb-1">Security Access</h4>
+      <p class="text-xs text-charcoal mb-6">Enter system verification code</p>
+
+      <form onsubmit="handleKeypadSubmit(event)" class="space-y-4">
+        <input 
+          type="password" 
+          id="keypadPinInput" 
+          maxlength="8" 
+          placeholder="••••"
+          class="w-full text-center bg-sand border border-hairline py-3 text-xl font-mono tracking-[0.5em] text-obsidian focus:outline-none focus:border-obsidian"
+        />
+        <p id="keypadErrorMsg" class="text-xs text-red-600 font-bold hidden">Access code invalid</p>
+        <button type="submit" class="w-full py-3 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+          Authenticate
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. FULL-SCREEN LUXURY HERO CAMPAIGN BANNER                                -->
+  <!-- ========================================================================= -->
+  <section class="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center border-b border-hairline overflow-hidden bg-obsidian">
+    <!-- Wide Hero Background Photograph -->
+    <img 
+      id="heroImageDisplay" 
+      src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg" 
+      alt="LAYL Luxury Scarf Campaign" 
+      class="absolute inset-0 w-full h-full object-cover object-center opacity-75"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/50 to-obsidian/40"></div>
+
+    <!-- Centered Editorial Statement -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center text-white space-y-6">
+      <div class="inline-flex items-center gap-3 text-xs tracking-widest uppercase font-bold text-zinc-300">
+        <span class="w-8 h-[1px] bg-zinc-400"></span>
+        <span>100% Authenticated Imports • Exclusive in Egypt</span>
+        <span class="w-8 h-[1px] bg-zinc-400"></span>
+      </div>
+
+      <h1 id="heroHeadlineDisplay" class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight leading-[1.05] text-balance">
+        GLOBAL HERITAGE. CURATED FOR CAIRO.
+      </h1>
+
+      <p id="heroSubheadlineDisplay" class="text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto font-normal leading-relaxed text-balance">
+        Directly imported authentic silk twill, cashmere stoles, and jacquard shawls from the heritage archives of Hermès, Louis Vuitton, and Burberry. Preserved in Cairo with white-glove courier delivery.
+      </p>
+
+      <div class="pt-4">
+        <a 
+          href="#catalogSection" 
+          id="heroButtonDisplay"
+          class="inline-block px-10 py-4 bg-white text-obsidian hover:bg-sand text-xs font-bold uppercase tracking-widest transition-all shadow-xl"
+        >
+          Shop All
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. THREE "SHOP BY BRAND" EDITORIAL CARDS (BENEATH FRONT PICTURE)          -->
+  <!-- ========================================================================= -->
+  <section class="border-b border-hairline bg-alabaster py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase font-bold tracking-widest text-charcoal block mb-2">COLLECTIONS BY MAISON</span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-obsidian uppercase tracking-tight">
+          EXPLORE THE HERITAGE HOUSES
+        </h2>
+      </div>
+
+      <!-- 3-Column Spacious Brand Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        
+        <!-- CARD 1: HERMÈS -->
+        <div 
+          onclick="setHouseFilter('Hermès')" 
+          class="group bg-sand border border-hairline cursor-pointer flex flex-col justify-between transition-all hover:border-obsidian hover:shadow-lg p-6 sm:p-8"
+        >
+          <div>
+            <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-charcoal mb-4">
+              <span>HERMÈS</span>
+              <span class="text-[10px] text-charcoal/70">PARIS, FRANCE</span>
+            </div>
+            
+            <div class="zoom-container aspect-[3/4] bg-white border border-hairline mb-6 overflow-hidden">
+              <img 
+                id="brandCardImageHermes"
+                src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.07_69b5d582.jpeg" 
+                alt="Shop Hermès" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <h3 id="brandCardTitleHermes" class="font-serif text-2xl font-bold uppercase text-obsidian mb-2">
+              SHOP HERMÈS
+            </h3>
+            <p id="brandCardSubHermes" class="text-xs text-charcoal leading-relaxed mb-6">
+              Pure silk twill carré, calèche jacquard & cashmere stoles with signature hand-rolled roulotté hems.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs font-bold uppercase tracking-widest text-obsidian group-hover:text-sienna transition-colors">
+            <span>Explore Hermès Collection</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- CARD 2: LOUIS VUITTON -->
+        <div 
+          onclick="setHouseFilter('Louis Vuitton')" 
+          class="group bg-sand border border-hairline cursor-pointer flex flex-col justify-between transition-all hover:border-obsidian hover:shadow-lg p-6 sm:p-8"
+        >
+          <div>
+            <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-charcoal mb-4">
+              <span>LOUIS VUITTON</span>
+              <span class="text-[10px] text-charcoal/70">PARIS, FRANCE</span>
+            </div>
+            
+            <div class="zoom-container aspect-[3/4] bg-white border border-hairline mb-6 overflow-hidden">
+              <img 
+                id="brandCardImageLV"
+                src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.25_16d9e8f7.jpeg" 
+                alt="Shop Louis Vuitton" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <h3 id="brandCardTitleLV" class="font-serif text-2xl font-bold uppercase text-obsidian mb-2">
+              SHOP LOUIS VUITTON
+            </h3>
+            <p id="brandCardSubLV" class="text-xs text-charcoal leading-relaxed mb-6">
+              Monogram shine, classic denim & silk-wool shawls in rich espresso, champagne, and anthracite.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs font-bold uppercase tracking-widest text-obsidian group-hover:text-sienna transition-colors">
+            <span>Explore Louis Vuitton</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- CARD 3: BURBERRY -->
+        <div 
+          onclick="setHouseFilter('Burberry')" 
+          class="group bg-sand border border-hairline cursor-pointer flex flex-col justify-between transition-all hover:border-obsidian hover:shadow-lg p-6 sm:p-8"
+        >
+          <div>
+            <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-charcoal mb-4">
+              <span>BURBERRY</span>
+              <span class="text-[10px] text-charcoal/70">LONDON, ENGLAND</span>
+            </div>
+            
+            <div class="zoom-container aspect-[3/4] bg-white border border-hairline mb-6 overflow-hidden">
+              <img 
+                id="brandCardImageBurberry"
+                src="/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg" 
+                alt="Shop Burberry" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <h3 id="brandCardTitleBurberry" class="font-serif text-2xl font-bold uppercase text-obsidian mb-2">
+              SHOP BURBERRY
+            </h3>
+            <p id="brandCardSubBurberry" class="text-xs text-charcoal leading-relaxed mb-6">
+              Archival vintage tartan, cashmere-silk wraps, and lightweight silk foulards complete with London packaging.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-hairline flex items-center justify-between text-xs font-bold uppercase tracking-widest text-obsidian group-hover:text-sienna transition-colors">
+            <span>Explore Burberry Collection</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. MAIN CATALOG SECTION (BREATHING ROOM & MAX 3 COLUMNS ON DESKTOP)       -->
+  <!-- ========================================================================= -->
+  <section id="catalogSection" class="bg-alabaster py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <!-- Catalog Controls & Filters -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-hairline">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-widest text-charcoal block mb-1">COLLECTIONS</span>
+          <h2 id="catalogActiveTitle" class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-obsidian uppercase tracking-tight">
+            ALL HERITAGE FOULARDS
+          </h2>
+        </div>
+        
+        <!-- Filter Tabs & Sort Controls -->
+        <div class="flex flex-wrap items-center gap-3">
+          <button onclick="setHouseFilter('All')" class="filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-transparent bg-obsidian text-white" data-filter="All">
+            All
+          </button>
+          <button onclick="setHouseFilter('Hermès')" class="filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-hairline bg-sand text-charcoal hover:border-obsidian" data-filter="Hermès">
+            Hermès
+          </button>
+          <button onclick="setHouseFilter('Louis Vuitton')" class="filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-hairline bg-sand text-charcoal hover:border-obsidian" data-filter="Louis Vuitton">
+            Louis Vuitton
+          </button>
+          <button onclick="setHouseFilter('Burberry')" class="filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-hairline bg-sand text-charcoal hover:border-obsidian" data-filter="Burberry">
+            Burberry
+          </button>
+          <button onclick="toggleSaleFilterOnly()" id="catalogSaleToggle" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-hairline bg-sand text-charcoal hover:border-sienna hover:text-sienna transition-colors">
+            On Sale Only
+          </button>
+
+          <!-- Sort Dropdown -->
+          <select id="catalogSortSelect" onchange="handleSortChange(event)" class="bg-sand border border-hairline text-obsidian text-xs font-bold uppercase tracking-wider py-2.5 px-3 focus:outline-none focus:border-obsidian">
+            <option value="featured">Featured Curations</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Alphabetical (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SPACIOUS 3-COLUMN PRODUCT GRID (grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16) -->
+      <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+        <!-- Rendered dynamically via renderProductGrid() -->
+      </div>
+
+      <!-- Empty state when no products match -->
+      <div id="emptyCatalogState" class="hidden py-24 text-center border border-hairline bg-sand p-12">
+        <i data-lucide="package-search" class="w-12 h-12 mx-auto text-charcoal mb-4"></i>
+        <h3 class="font-serif text-2xl font-bold uppercase text-obsidian mb-2">No Matching Pieces Found</h3>
+        <p class="text-charcoal text-xs max-w-md mx-auto mb-6">
+          No headscarves match your selected filter.
+        </p>
+        <button onclick="resetAllFilters()" class="px-8 py-3.5 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800">
+          View All Houses
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. MAISON HERITAGE & PROVENANCE STORY SECTION                             -->
+  <!-- ========================================================================= -->
+  <section class="border-t border-hairline bg-sand py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="max-w-3xl mb-16">
+        <span class="text-xs uppercase font-bold tracking-widest text-charcoal block mb-2">THE LAYL STANDARD</span>
+        <h2 id="brandStoryTitleDisplay" class="font-serif text-3xl sm:text-5xl font-bold text-obsidian uppercase tracking-tight mb-6">
+          HOW WE BRING GLOBAL LUXURY HERITAGE TO CAIRO
+        </h2>
+        <p id="brandStoryTextDisplay" class="text-charcoal text-sm sm:text-base leading-relaxed">
+          Every headscarf in the LAYL collection is hand-selected from flagship salons in Paris, Milan, and London. We believe luxury in Egypt should never come with doubt, delay, or customs uncertainty.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 sm:p-10 border border-hairline bg-alabaster">
+          <span class="font-serif text-4xl font-bold text-obsidian block mb-4">01</span>
+          <h3 class="text-xs uppercase font-bold tracking-widest text-obsidian mb-3">100% Provenance Verification</h3>
+          <p class="text-xs text-charcoal leading-relaxed">
+            Every piece is inspected for authentic hallmark signatures, hand-rolled hem tension, and correct silk twill weight before entering our Cairo inventory.
+          </p>
+        </div>
+
+        <div class="p-8 sm:p-10 border border-hairline bg-alabaster">
+          <span class="font-serif text-4xl font-bold text-obsidian block mb-4">02</span>
+          <h3 class="text-xs uppercase font-bold tracking-widest text-obsidian mb-3">Climate-Regulated Care & Storage</h3>
+          <p class="text-xs text-charcoal leading-relaxed">
+            Preserved in acid-free archival tissue within temperature and humidity-controlled storage in Cairo to protect delicate silk proteins and cashmere fibers.
+          </p>
+        </div>
+
+        <div class="p-8 sm:p-10 border border-hairline bg-alabaster">
+          <span class="font-serif text-4xl font-bold text-obsidian block mb-4">03</span>
+          <h3 class="text-xs uppercase font-bold tracking-widest text-obsidian mb-3">Private White-Glove Courier</h3>
+          <p class="text-xs text-charcoal leading-relaxed">
+            Delivered directly to your residence across Zamalek, New Cairo, Sheikh Zayed, and all Egyptian governorates with discretion and physical authentication certs.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. FOOTER                                                                 -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-hairline bg-obsidian text-white pt-20 pb-12">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-hairlineDark">
+        
+        <!-- Brand Info (6 cols) -->
+        <div class="md:col-span-6 space-y-4">
+          <span class="font-serif text-4xl font-bold tracking-[0.3em] block">L A Y L</span>
+          <span class="text-[10px] uppercase tracking-[0.35em] text-zinc-400 block">Maison de Foulards • Le Caire</span>
+          <p id="footerTextDisplay" class="text-xs text-zinc-400 leading-relaxed max-w-md">
+            The exclusive Egyptian destination for authenticated luxury headscarves from Hermès, Louis Vuitton, and Burberry. Available exclusively online for private courier delivery.
+          </p>
+          <div class="pt-2 text-xs font-mono text-zinc-300">
+            Customer Inquiries: <span id="footerSupportPhone" class="font-bold text-white">+20 100 123 4567</span>
+          </div>
+        </div>
+
+        <!-- Collections (3 cols) -->
+        <div class="md:col-span-3">
+          <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-200 mb-4">Collections</h4>
+          <ul class="space-y-2.5 text-xs text-zinc-400 font-medium">
+            <li><button onclick="setHouseFilter('All')" class="hover:text-white transition-colors">Shop All</button></li>
+            <li><button onclick="setHouseFilter('Hermès')" class="hover:text-white transition-colors">Hermès</button></li>
+            <li><button onclick="setHouseFilter('Louis Vuitton')" class="hover:text-white transition-colors">Louis Vuitton</button></li>
+            <li><button onclick="setHouseFilter('Burberry')" class="hover:text-white transition-colors">Burberry</button></li>
+            <li><button onclick="toggleSaleFilterOnly()" class="hover:text-white text-sienna transition-colors">Sale</button></li>
+          </ul>
+        </div>
+
+        <!-- Client Services (3 cols) -->
+        <div class="md:col-span-3">
+          <h4 class="text-xs uppercase tracking-widest font-bold text-zinc-200 mb-4">Client Services</h4>
+          <ul class="space-y-2.5 text-xs text-zinc-400 font-medium">
+            <li><button onclick="openTrackOrderModal()" class="hover:text-white transition-colors flex items-center gap-1.5"><i data-lucide="truck" class="w-3.5 h-3.5"></i><span>Track My Order</span></button></li>
+            <li><button onclick="openCartDrawer()" class="hover:text-white transition-colors">Shopping Bag</button></li>
+            <li><a href="#catalogSection" class="hover:text-white transition-colors">100% Authenticity Guarantee</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500 font-medium uppercase tracking-wider">
+        <p>© 2026 LAYL MAISON CAIRO. ALL RIGHTS RESERVED. 100% AUTHENTIC GLOBAL IMPORTS.</p>
+        <div class="flex items-center gap-6">
+          <span>CURRENCY: EGP (EGYPTIAN POUNDS)</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- FULL-SCREEN DEDICATED PRODUCT PAGE (BURBERRY-STYLE FULL PAGE VIEW)        -->
+  <!-- ========================================================================= -->
+  <div id="productModal" class="fixed inset-0 w-screen h-screen bg-[#FAF8F5] z-50 overflow-y-auto hidden">
+    
+    <!-- Top Bar of Product Page: [ ← BACK TO SHOP ] | L A Y L | BAG (0) -->
+    <div class="sticky top-0 z-20 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 h-20 flex items-center justify-between gap-4">
+        <button 
+          onclick="closeProductModal()" 
+          class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-sand border border-hairline text-obsidian text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:border-obsidian hover:bg-white transition-all"
+          aria-label="Back to Shop"
+        >
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span>Back to Shop</span>
+        </button>
+
+        <button onclick="closeProductModal()" class="font-serif text-2xl sm:text-4xl font-bold tracking-[0.35em] text-obsidian uppercase whitespace-nowrap">
+          L A Y L
+        </button>
+
+        <button 
+          onclick="openCartDrawer()" 
+          class="flex items-center gap-2 px-3.5 sm:px-5 py-2.5 bg-obsidian text-white text-[11px] sm:text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors"
+        >
+          <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i>
+          <span>Bag (<span id="productPageBagCount">0</span>)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Full-Page Split Layout -->
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-5rem)] border-x border-hairline">
+        
+        <!-- Left Half (Large Visual: 7 cols on desktop) -->
+        <div class="lg:col-span-7 bg-sand border-b lg:border-b-0 lg:border-r border-hairline flex items-center justify-center p-6 sm:p-12 md:p-16 relative">
+          <div class="w-full max-w-2xl aspect-[3/4] bg-white border border-hairline relative overflow-hidden shadow-sm">
+            <img id="modalProductImage" src="" alt="Product Detail" class="w-full h-full object-cover object-center" />
+            <div id="modalSaleTag" class="absolute top-5 left-5 hidden bg-sienna text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1.5">
+              SALE
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Half (Product Details: 5 cols on desktop) -->
+        <div class="lg:col-span-5 bg-[#FAF8F5] p-8 sm:p-12 md:p-16 flex flex-col justify-between">
+          <div class="space-y-8">
+            
+            <!-- Brand House & SKU + Stock Badge -->
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 text-xs uppercase font-bold tracking-widest text-charcoal mb-3">
+                <span id="modalProductHouse" class="text-obsidian tracking-[0.2em]">HERMÈS</span>
+                <span id="modalProductStock" class="px-2.5 py-1 border border-emerald-800/30 bg-emerald-50 text-emerald-900 text-[10px] font-bold uppercase tracking-widest">
+                  IN STOCK
+                </span>
+              </div>
+
+              <h1 id="modalProductTitle" class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-obsidian leading-[1.1] mb-3">
+                PRODUCT TITLE
+              </h1>
+              <span id="modalProductSku" class="text-[11px] font-mono uppercase tracking-widest text-charcoal/80 block">
+                SKU: LAYL-HER-01
+              </span>
+            </div>
+
+            <!-- Price Breakdown in EGP -->
+            <div class="p-6 bg-sand border border-hairline">
+              <div class="text-[10px] uppercase font-bold tracking-widest text-charcoal mb-1.5">PRICE IN EGYPTIAN POUNDS (EGP)</div>
+              <div class="flex flex-wrap items-baseline gap-3">
+                <span id="modalDiscountedPrice" class="text-3xl font-bold text-obsidian tracking-tight">EGP 0</span>
+                <span id="modalOriginalPrice" class="text-base line-through text-charcoal hidden">EGP 0</span>
+                <span id="modalDiscountBadge" class="bg-sienna text-white text-[10px] font-bold px-2.5 py-1 uppercase tracking-widest hidden">20% OFF</span>
+              </div>
+            </div>
+
+            <!-- Full Product Description -->
+            <div class="space-y-2.5">
+              <h2 class="text-xs uppercase font-bold tracking-widest text-obsidian">Description & Provenance</h2>
+              <p id="modalProductDescription" class="text-sm text-charcoal leading-relaxed whitespace-pre-line">
+                Description goes here.
+              </p>
+            </div>
+
+            <!-- Material & Dimensions Details -->
+            <div class="border-t border-hairline pt-6 space-y-3 text-xs">
+              <div class="flex justify-between py-2 border-b border-hairline">
+                <span class="font-bold text-obsidian uppercase tracking-wider">Material Composition</span>
+                <span id="modalProductMaterial" class="text-charcoal font-medium text-right">100% Silk Twill</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-hairline">
+                <span class="font-bold text-obsidian uppercase tracking-wider">Dimensions</span>
+                <span id="modalProductDimensions" class="text-charcoal font-medium text-right">90 × 90 cm</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-hairline">
+                <span class="font-bold text-obsidian uppercase tracking-wider">Country of Origin</span>
+                <span id="modalProductOrigin" class="text-charcoal font-medium text-right">Paris, France</span>
+              </div>
+              <div class="flex justify-between py-2 border-b border-hairline">
+                <span class="font-bold text-obsidian uppercase tracking-wider">Courier Delivery</span>
+                <span class="text-obsidian font-bold text-right">Complimentary Across Egypt</span>
+              </div>
+            </div>
+
+            <!-- Quantity Selector & Large Full-Width ADD TO BAG Button -->
+            <div class="pt-4 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-widest text-obsidian">Quantity</span>
+                <div class="flex items-center border border-obsidian bg-white">
+                  <button type="button" onclick="adjustProductPageQty(-1)" class="w-10 h-10 flex items-center justify-center text-sm font-bold text-obsidian hover:bg-sand transition-colors" aria-label="Decrease quantity">-</button>
+                  <span id="productPageQtyDisplay" class="w-12 text-center text-xs font-bold text-obsidian">1</span>
+                  <button type="button" onclick="adjustProductPageQty(1)" class="w-10 h-10 flex items-center justify-center text-sm font-bold text-obsidian hover:bg-sand transition-colors" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <button 
+                id="modalAddToBagBtn" 
+                onclick="modalAddToCart()" 
+                class="w-full py-5 bg-obsidian text-white text-xs font-bold uppercase tracking-[0.25em] hover:bg-zinc-800 transition-colors flex items-center justify-center gap-3 shadow-lg"
+              >
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                <span>ADD TO BAG</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT SLIDE-OUT SHOPPING BAG DRAWER                                       -->
+  <!-- ========================================================================= -->
+  <div id="cartDrawer" class="fixed inset-0 z-[60] hidden">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeCartDrawer()"></div>
+    
+    <div class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-alabaster border-l border-hairline shadow-2xl flex flex-col z-10">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-hairline flex items-center justify-between bg-sand">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block">YOUR BAG</span>
+          <h3 class="font-serif text-2xl font-bold uppercase text-obsidian">
+            SHOPPING BAG (<span id="cartDrawerCount">0</span>)
+          </h3>
+        </div>
+        <button onclick="closeCartDrawer()" class="p-2 border border-hairline bg-alabaster hover:bg-obsidian hover:text-white transition-colors" aria-label="Close cart">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Drawer Items List -->
+      <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 divide-y divide-hairline">
+        <!-- Rendered via updateCartUI() -->
+      </div>
+
+      <!-- Empty Cart State -->
+      <div id="emptyCartView" class="hidden flex-1 flex flex-col items-center justify-center p-8 text-center">
+        <i data-lucide="shopping-bag" class="w-12 h-12 text-charcoal/40 mb-4"></i>
+        <p class="font-serif text-xl font-bold uppercase text-obsidian mb-2">Your Bag Is Empty</p>
+        <p class="text-xs text-charcoal mb-6 max-w-xs leading-relaxed">
+          Explore our collection of authentic imported luxury scarves from Hermès, Louis Vuitton, and Burberry.
+        </p>
+        <button onclick="closeCartDrawer()" class="px-6 py-3 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800">
+          Discover Pieces
+        </button>
+      </div>
+
+      <!-- Drawer Footer & PROCEED TO CHECKOUT Button -->
+      <div id="cartFooterView" class="p-6 border-t border-hairline bg-sand space-y-4">
+        <div class="space-y-1.5 text-xs">
+          <div class="flex justify-between text-charcoal">
+            <span>Subtotal:</span>
+            <span id="cartSubtotal" class="font-bold text-obsidian">EGP 0</span>
+          </div>
+          <div class="flex justify-between text-charcoal">
+            <span>Cairo & Egypt Courier Delivery:</span>
+            <span id="cartDeliveryFee" class="font-bold text-emerald-800 uppercase tracking-wider">COMPLIMENTARY</span>
+          </div>
+          <div class="flex justify-between text-sm font-bold text-obsidian pt-2 border-t border-hairline">
+            <span>TOTAL:</span>
+            <span id="cartTotal" class="text-base font-bold text-obsidian">EGP 0</span>
+          </div>
+        </div>
+
+        <button 
+          onclick="proceedToShopifyCheckout()" 
+          class="w-full py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2 shadow-sm"
+        >
+          <span>Proceed to Checkout</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SHOPIFY-STYLE DEDICATED CHECKOUT VIEW / MODAL (TWO COLUMNS, NO WHATSAPP)   -->
+  <!-- ========================================================================= -->
+  <div id="shopifyCheckoutView" class="fixed inset-0 z-50 hidden overflow-y-auto bg-alabaster">
+    
+    <!-- Top Checkout Header -->
+    <div class="border-b border-hairline bg-alabaster sticky top-0 z-20">
+      <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="font-serif text-2xl font-bold tracking-[0.3em] uppercase text-obsidian">L A Y L</span>
+          <span class="text-zinc-300">|</span>
+          <span class="text-xs uppercase tracking-widest font-semibold text-charcoal">Secure Checkout</span>
+        </div>
+        <button onclick="closeShopifyCheckout()" class="text-xs uppercase font-bold tracking-wider text-charcoal hover:text-obsidian flex items-center gap-1.5">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          <span>Return to Store</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 2-Column Checkout Content -->
+    <div class="max-w-6xl mx-auto px-6 py-10 md:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Column: Delivery & Contact Form (7 cols) -->
+        <div class="lg:col-span-7 space-y-8">
+          
+          <form id="shopifyCheckoutForm" onsubmit="handleShopifyCheckoutSubmit(event)" class="space-y-8">
+            
+            <!-- Section 1: Contact Information (Primary & Secondary Backup Phone) -->
+            <div class="bg-white border border-hairline p-6 md:p-8 space-y-4">
+              <div class="flex items-center justify-between border-b border-hairline pb-3">
+                <h3 class="font-serif text-xl font-bold uppercase text-obsidian">1. Contact Information</h3>
+                <span class="text-[10px] text-charcoal font-semibold uppercase">Required for courier</span>
+              </div>
+
+              <!-- Primary Phone -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">
+                  Primary Mobile Phone Number *
+                </label>
+                <input 
+                  type="tel" 
+                  id="checkoutPrimaryPhone" 
+                  required 
+                  placeholder="e.g. 010XXXXXXXX"
+                  class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian font-mono"
+                />
+              </div>
+
+              <!-- Secondary Phone (Backup) with prominent guidance label -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">
+                  Secondary Mobile Phone (Backup) *
+                </label>
+                <input 
+                  type="tel" 
+                  id="checkoutBackupPhone" 
+                  required 
+                  placeholder="e.g. 012XXXXXXXX or 011XXXXXXXX"
+                  class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian font-mono"
+                />
+                <span class="block text-[10px] text-charcoal mt-1.5 leading-snug">
+                  * Backup number in case your primary phone is unreachable when the courier calls.
+                </span>
+              </div>
+            </div>
+
+            <!-- Section 2: Delivery Address -->
+            <div class="bg-white border border-hairline p-6 md:p-8 space-y-4">
+              <div class="border-b border-hairline pb-3">
+                <h3 class="font-serif text-xl font-bold uppercase text-obsidian">2. Delivery Address</h3>
+              </div>
+
+              <!-- First & Last Name side by side -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">First Name *</label>
+                  <input type="text" id="checkoutFirstName" required placeholder="Farida" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Last Name *</label>
+                  <input type="text" id="checkoutLastName" required placeholder="El-Shazly" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
+                </div>
+              </div>
+
+              <!-- Governorate / City Dropdown -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">City / Governorate *</label>
+                <select id="checkoutCity" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
+                  <option value="New Cairo / Tagamoa">New Cairo / Tagamoa</option>
+                  <option value="Sheikh Zayed / 6th October">Sheikh Zayed / 6th October</option>
+                  <option value="Zamalek">Zamalek</option>
+                  <option value="Maadi">Maadi</option>
+                  <option value="Heliopolis">Heliopolis</option>
+                  <option value="Nasr City">Nasr City</option>
+                  <option value="Giza / Dokki / Mohandessin">Giza / Dokki / Mohandessin</option>
+                  <option value="Alexandria">Alexandria</option>
+                  <option value="Other Egyptian Governorate">Other Egyptian Governorate</option>
+                </select>
+              </div>
+
+              <!-- Full Street Address -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Full Street Address (Street Name, Building/Villa #) *</label>
+                <input type="text" id="checkoutStreet" required placeholder="e.g. 14 Hassan Sabry Street, Building 5" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+
+              <!-- Apartment, Suite, Landmark -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Apartment, Suite, Floor or Landmark</label>
+                <input type="text" id="checkoutLandmark" placeholder="e.g. Apt 4, 2nd Floor, next to Gezira Club" class="w-full bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+            </div>
+
+            <!-- Section 3: Shipping Method -->
+            <div class="bg-white border border-hairline p-6 md:p-8 space-y-3">
+              <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-3 border-b border-hairline">3. Shipping Method</h3>
+              <div class="p-4 bg-sand border border-hairline flex items-center justify-between text-xs">
+                <div>
+                  <span class="font-bold text-obsidian block uppercase">White-Glove Private Courier</span>
+                  <span class="text-[11px] text-charcoal">Secure temperature-controlled transport with physical authenticity certification</span>
+                </div>
+                <span id="checkoutShippingFeeDisplay" class="font-bold text-obsidian">EGP 0</span>
+              </div>
+            </div>
+
+            <!-- Section 4: Payment Method (COD or InstaPay) -->
+            <div class="bg-white border border-hairline p-6 md:p-8 space-y-4">
+              <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-3 border-b border-hairline">4. Payment Method</h3>
+              
+              <div class="space-y-3">
+                <label class="flex items-start gap-3 p-4 bg-sand border border-hairline cursor-pointer hover:border-obsidian transition-colors">
+                  <input type="radio" name="checkoutPayment" value="Cash on Delivery" checked class="mt-1">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-obsidian block">Cash on Delivery (COD)</span>
+                    <span class="text-[11px] text-charcoal block mt-0.5">Pay in cash directly to our private courier upon receiving and inspecting your piece.</span>
+                  </div>
+                </label>
+
+                <label class="flex items-start gap-3 p-4 bg-sand border border-hairline cursor-pointer hover:border-obsidian transition-colors">
+                  <input type="radio" name="checkoutPayment" value="InstaPay / Bank Transfer" class="mt-1">
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-obsidian block">InstaPay / Bank Transfer</span>
+                    <span class="text-[11px] text-charcoal block mt-0.5">Pay instantly via InstaPay address or CIB bank transfer prior to courier dispatch.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+              type="submit" 
+              class="w-full py-5 bg-obsidian text-white text-xs font-bold uppercase tracking-[0.25em] hover:bg-zinc-800 transition-colors shadow-lg"
+            >
+              Complete Order
+            </button>
+
+          </form>
+
+        </div>
+
+        <!-- Right Column: Sticky Shopify Order Summary (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="sticky top-28 bg-white border border-hairline p-6 md:p-8 space-y-6">
+            <h3 class="font-serif text-xl font-bold uppercase text-obsidian pb-4 border-b border-hairline">Order Summary</h3>
+
+            <!-- Itemized List with Thumbnails & Qty Badges -->
+            <div id="checkoutItemsList" class="space-y-4 max-h-80 overflow-y-auto divide-y divide-hairline">
+              <!-- Rendered via renderCheckoutSummary() -->
+            </div>
+
+            <!-- Totals Breakdown -->
+            <div class="pt-4 border-t border-hairline space-y-2 text-xs">
+              <div class="flex justify-between text-charcoal">
+                <span>Subtotal</span>
+                <span id="checkoutSummarySubtotal" class="font-bold text-obsidian">EGP 0</span>
+              </div>
+              <div class="flex justify-between text-charcoal">
+                <span>Courier Shipping</span>
+                <span id="checkoutSummaryShipping" class="font-bold text-obsidian">EGP 0</span>
+              </div>
+              <div class="flex justify-between text-base font-bold text-obsidian pt-3 border-t border-hairline">
+                <span>Total Amount (EGP)</span>
+                <span id="checkoutSummaryTotal" class="text-xl font-serif font-bold text-obsidian">EGP 0</span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-sand border border-hairline text-[10px] text-charcoal leading-relaxed">
+              Every headscarf is authentic, preserved in acid-free tissue paper with tamper-evident security seal.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: LIVE ORDER TRACKING ("TRACK ORDER")                                -->
+  <!-- ========================================================================= -->
+  <div id="trackOrderModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeTrackOrderModal()"></div>
+    
+    <div class="relative bg-alabaster border border-hairline w-full max-w-2xl max-h-[92vh] overflow-y-auto z-10 shadow-2xl p-6 sm:p-10">
+      <button onclick="closeTrackOrderModal()" class="absolute top-4 right-4 p-2.5 bg-alabaster border border-hairline hover:bg-obsidian hover:text-white transition-colors" aria-label="Close track order">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block mb-1">COURIER DISPATCH</span>
+        <h3 class="font-serif text-3xl font-bold uppercase text-obsidian">TRACK YOUR ORDER</h3>
+      </div>
+
+      <!-- Search Box (By Order ID or Phone Number) -->
+      <form onsubmit="handleTrackOrderSearch(event)" class="mb-8">
+        <div class="flex gap-2">
+          <input 
+            type="text" 
+            id="trackSearchInput" 
+            placeholder="Enter Order ID (e.g. LAYL-1001) or Phone Number..." 
+            class="flex-1 bg-sand border border-hairline px-4 py-3 text-xs focus:outline-none focus:border-obsidian font-mono uppercase"
+          />
+          <button type="submit" class="px-6 py-3 bg-obsidian text-white text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-colors">
+            Track
+          </button>
+        </div>
+      </form>
+
+      <!-- Tracking Results Card -->
+      <div id="trackResultContainer" class="hidden space-y-6">
+        
+        <!-- Order Header Badge -->
+        <div class="p-5 bg-sand border border-hairline flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-charcoal block">ORDER REFERENCE</span>
+            <span id="trackResultOrderId" class="font-mono text-base font-bold text-obsidian">LAYL-1001</span>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-charcoal block">RECIPIENT</span>
+            <span id="trackResultCustomer" class="text-xs font-bold text-obsidian">Farida El-Shazly</span>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-charcoal block">TOTAL</span>
+            <span id="trackResultTotal" class="text-xs font-bold text-obsidian">EGP 28,500</span>
+          </div>
+        </div>
+
+        <!-- 4-STEP VISUAL PROGRESS TRACKER -->
+        <div class="bg-white border border-hairline p-6">
+          <h4 class="text-xs uppercase font-bold tracking-widest text-charcoal mb-6 text-center">Live Dispatch Timeline</h4>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            
+            <!-- Step 1: Being Prepared -->
+            <div id="trackStep1" class="p-3 border transition-all border-obsidian bg-sand">
+              <div class="w-8 h-8 rounded-none bg-obsidian text-white flex items-center justify-center mx-auto mb-2 text-xs font-bold">1</div>
+              <span class="text-[11px] font-bold uppercase block text-obsidian">Being Prepared</span>
+              <span class="text-[9px] text-charcoal block mt-1">Authentication & Packaging</span>
+            </div>
+
+            <!-- Step 2: With Delivery Company -->
+            <div id="trackStep2" class="p-3 border transition-all border-hairline bg-alabaster">
+              <div class="w-8 h-8 rounded-none bg-sand text-charcoal flex items-center justify-center mx-auto mb-2 text-xs font-bold">2</div>
+              <span class="text-[11px] font-bold uppercase block text-charcoal">With Delivery Co.</span>
+              <span class="text-[9px] text-charcoal/70 block mt-1">Handed to Courier</span>
+            </div>
+
+            <!-- Step 3: Out for Delivery -->
+            <div id="trackStep3" class="p-3 border transition-all border-hairline bg-alabaster">
+              <div class="w-8 h-8 rounded-none bg-sand text-charcoal flex items-center justify-center mx-auto mb-2 text-xs font-bold">3</div>
+              <span class="text-[11px] font-bold uppercase block text-charcoal">Out for Delivery</span>
+              <span class="text-[9px] text-charcoal/70 block mt-1">On Courier Route</span>
+            </div>
+
+            <!-- Step 4: Delivered -->
+            <div id="trackStep4" class="p-3 border transition-all border-hairline bg-alabaster">
+              <div class="w-8 h-8 rounded-none bg-sand text-charcoal flex items-center justify-center mx-auto mb-2 text-xs font-bold">4</div>
+              <span class="text-[11px] font-bold uppercase block text-charcoal">Delivered</span>
+              <span class="text-[9px] text-charcoal/70 block mt-1">Safely Received</span>
+            </div>
+
+          </div>
+
+          <!-- Active Stage Narrative Message -->
+          <div class="mt-6 p-4 bg-sand border border-hairline text-center">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block mb-1">CURRENT STATUS</span>
+            <p id="trackStatusNarrative" class="text-xs text-obsidian font-medium">
+              Your piece is being authenticated, packaged, and prepared in Cairo for courier dispatch.
+            </p>
+          </div>
+        </div>
+
+        <!-- Shipment Items List -->
+        <div class="bg-white border border-hairline p-6">
+          <h4 class="text-xs uppercase font-bold tracking-wider text-obsidian mb-4">Pieces in Shipment</h4>
+          <div id="trackItemsList" class="space-y-3 divide-y divide-hairline">
+            <!-- Rendered in trackOrder -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Match Error -->
+      <div id="trackNotFoundError" class="hidden p-6 bg-sand border border-hairline text-center text-xs text-charcoal">
+        No order found matching that reference or phone number. Please check your Order ID (e.g. LAYL-1001) or enter your primary mobile phone.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: ORDER CONFIRMED SCREEN (RIGHT AFTER CHECKOUT)                      -->
+  <!-- ========================================================================= -->
+  <div id="orderSuccessModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="drawer-backdrop fixed inset-0"></div>
+    <div class="relative bg-alabaster border border-hairline w-full max-w-lg p-8 sm:p-10 text-center z-10 shadow-2xl">
+      <div class="w-12 h-12 bg-obsidian text-white flex items-center justify-center mx-auto mb-4">
+        <i data-lucide="check" class="w-6 h-6"></i>
+      </div>
+      <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block mb-1">ORDER CONFIRMED</span>
+      <h3 class="font-serif text-3xl font-bold uppercase text-obsidian mb-2">MERCI BEAUCOUP</h3>
+      <p id="successOrderIdDisplay" class="text-base font-mono font-bold text-obsidian mb-4">ORDER ID: LAYL-1001</p>
+      
+      <p class="text-xs text-charcoal leading-relaxed mb-6 max-w-md mx-auto">
+        Your order is registered with LAYL Cairo and is now <strong>Being Prepared</strong>. Our private courier will call your primary or backup phone prior to arrival.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="viewTrackingFromConfirmation()" class="flex-1 py-3.5 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800">
+          Track Live Dispatch
+        </button>
+        <button onclick="closeSuccessModal()" class="px-6 py-3.5 bg-sand border border-hairline text-obsidian text-xs font-bold uppercase tracking-widest hover:border-obsidian">
+          Continue Browsing
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 8. FULL-ACCESS OWNER PORTAL (4 TABS: ORDERS, PRODUCTS, EDIT SITE, EXPORT) -->
+  <!-- ========================================================================= -->
+  <div id="ownerPortalModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-4">
+    <div class="drawer-backdrop fixed inset-0" onclick="closeOwnerPortal()"></div>
+    
+    <div class="relative bg-alabaster border border-hairline w-full max-w-6xl h-[95vh] flex flex-col z-10 shadow-2xl overflow-hidden">
+      
+      <!-- Admin Header -->
+      <div class="p-5 border-b border-hairline bg-obsidian text-white flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="p-2 bg-zinc-800 border border-zinc-700">
+            <i data-lucide="shield" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold uppercase tracking-wider">LAYL MAISON • OWNER PORTAL</h3>
+            <span class="text-[10px] text-zinc-400 uppercase tracking-widest font-semibold">Orders Dispatch, Catalog & Storefront Management</span>
+          </div>
+        </div>
+        <button onclick="closeOwnerPortal()" class="p-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-700 text-white transition-colors" aria-label="Close portal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Admin Tab Bar (4 Clear Tabs) -->
+      <div class="flex items-center gap-1 px-6 pt-3 bg-sand border-b border-hairline overflow-x-auto shrink-0 text-xs font-bold uppercase tracking-wider">
+        <button onclick="switchAdminTab('orders')" class="admin-tab-btn px-5 py-3 border-b-2 border-obsidian text-obsidian bg-alabaster" data-tab="orders">
+          Orders Management (<span id="adminOrdersBadge">1</span>)
+        </button>
+        <button onclick="switchAdminTab('products')" class="admin-tab-btn px-5 py-3 border-b-2 border-transparent text-charcoal hover:text-obsidian" data-tab="products">
+          Manage Products & Sales
+        </button>
+        <button onclick="switchAdminTab('siteContent')" class="admin-tab-btn px-5 py-3 border-b-2 border-transparent text-charcoal hover:text-obsidian" data-tab="siteContent">
+          Edit Website Text & Photos
+        </button>
+        <button onclick="switchAdminTab('export')" class="admin-tab-btn px-5 py-3 border-b-2 border-transparent text-charcoal hover:text-obsidian" data-tab="export">
+          Save & Export HTML
+        </button>
+      </div>
+
+      <!-- TAB 1: ORDERS MANAGEMENT (ONE-CLICK STATUS UPDATES) -->
+      <div id="adminTabOrders" class="admin-tab-content flex-1 overflow-y-auto p-6 bg-alabaster space-y-6">
+        
+        <!-- Summary KPI Bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="p-4 bg-white border border-hairline">
+            <span class="text-[10px] uppercase font-bold text-charcoal block">Total Orders</span>
+            <span id="kpiTotalOrders" class="text-2xl font-serif font-bold text-obsidian">1</span>
+          </div>
+          <div class="p-4 bg-white border border-hairline">
+            <span class="text-[10px] uppercase font-bold text-charcoal block">Being Prepared</span>
+            <span id="kpiPrepOrders" class="text-2xl font-serif font-bold text-amber-700">1</span>
+          </div>
+          <div class="p-4 bg-white border border-hairline">
+            <span class="text-[10px] uppercase font-bold text-charcoal block">Out for Delivery</span>
+            <span id="kpiOutOrders" class="text-2xl font-serif font-bold text-blue-700">0</span>
+          </div>
+          <div class="p-4 bg-white border border-hairline">
+            <span class="text-[10px] uppercase font-bold text-charcoal block">Delivered</span>
+            <span id="kpiDoneOrders" class="text-2xl font-serif font-bold text-emerald-800">0</span>
+          </div>
+        </div>
+
+        <!-- Orders Filter Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-hairline">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-charcoal">Filter:</span>
+            <button onclick="filterAdminOrders('All')" class="order-filter-btn px-3 py-1 text-xs font-bold bg-obsidian text-white border border-obsidian" data-filter="All">All</button>
+            <button onclick="filterAdminOrders('Being Prepared')" class="order-filter-btn px-3 py-1 text-xs font-bold bg-sand text-charcoal border border-hairline hover:border-obsidian" data-filter="Being Prepared">Being Prepared</button>
+            <button onclick="filterAdminOrders('With Delivery Company')" class="order-filter-btn px-3 py-1 text-xs font-bold bg-sand text-charcoal border border-hairline hover:border-obsidian" data-filter="With Delivery Company">With Delivery Co.</button>
+            <button onclick="filterAdminOrders('Out for Delivery')" class="order-filter-btn px-3 py-1 text-xs font-bold bg-sand text-charcoal border border-hairline hover:border-obsidian" data-filter="Out for Delivery">Out for Delivery</button>
+            <button onclick="filterAdminOrders('Delivered')" class="order-filter-btn px-3 py-1 text-xs font-bold bg-sand text-charcoal border border-hairline hover:border-obsidian" data-filter="Delivered">Delivered</button>
+          </div>
+          <span class="text-xs text-charcoal font-semibold">Click any status button to update order instantly</span>
+        </div>
+
+        <!-- Order Cards List -->
+        <div id="adminOrdersCardsList" class="space-y-6">
+          <!-- Rendered dynamically via renderAdminOrders() -->
+        </div>
+
+      </div>
+
+      <!-- TAB 2: MANAGE PRODUCTS & SALES -->
+      <div id="adminTabProducts" class="admin-tab-content hidden flex-1 overflow-y-auto p-6 bg-alabaster space-y-8">
+        
+        <!-- Add / Edit Product Form Container -->
+        <div id="adminProductFormCard" class="bg-white border border-hairline p-6 md:p-8 transition-all">
+          <div class="flex items-center justify-between gap-4 mb-2">
+            <h4 id="adminProductFormHeading" class="font-serif text-2xl font-bold uppercase text-obsidian">Add New Scarf to Collections</h4>
+            <span id="adminEditingBadge" class="hidden px-3 py-1 bg-obsidian text-white text-[10px] font-bold uppercase tracking-widest">Editing Mode</span>
+          </div>
+          <p class="text-xs text-charcoal mb-6">Include detailed material composition, measurements, and upload photos from your Mac/phone.</p>
+
+          <form id="adminProductForm" onsubmit="window.handleSaveProduct(event)" class="space-y-4">
+            <input type="hidden" id="editingProductId" value="">
+            <input type="hidden" id="editProductId" value="">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Scarf Title *</label>
+                <input type="text" id="adminProdTitle" required placeholder="e.g. Hermès Calèche Silk Twill Carré" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Maison / Brand *</label>
+                <select id="adminProdHouse" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+                  <option value="Hermès">Hermès</option>
+                  <option value="Louis Vuitton">Louis Vuitton</option>
+                  <option value="Burberry">Burberry</option>
+                  <option value="Custom">Custom Maison</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Base Price (EGP) *</label>
+                <input type="number" id="adminProdBasePrice" required min="1" step="any" placeholder="28500" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Sale % (0 - 90)</label>
+                <input type="number" id="adminProdDiscount" min="0" max="90" value="0" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Stock Status</label>
+                <select id="adminProdStock" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+                  <option value="in_stock">In Stock</option>
+                  <option value="sold_out">Sold Out</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Material Subtitle *</label>
+                <input type="text" id="adminProdMaterial" required placeholder="e.g. 100% Cashmere-Silk Blend • Hand-Fringed" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Dimensions *</label>
+                <input type="text" id="adminProdDimensions" required placeholder="e.g. 140 × 140 cm" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+              </div>
+            </div>
+
+            <!-- Full Product Description -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Full Detailed Product Description *</label>
+              <textarea id="adminProdDescription" rows="3" required placeholder="Provide full provenance, colorway details, packaging, and authenticity notes..." class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian"></textarea>
+            </div>
+
+            <!-- Photo Upload: File Upload OR URL -->
+            <div class="p-4 bg-sand border border-hairline space-y-3">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-obsidian">Scarf Photograph (Upload File or Enter URL)</span>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Upload Photo from Mac/Phone</label>
+                  <input type="file" id="adminProdFileInput" accept="image/*" onchange="handleProductPhotoUpload(event)" class="w-full bg-white border border-hairline p-2 text-xs">
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Or Enter Image URL</label>
+                  <input type="text" id="adminProdImageUrl" placeholder="https://... or /assets/..." oninput="handleProductPhotoUrlInput()" class="w-full bg-white border border-hairline px-3 py-2.5 text-xs focus:outline-none focus:border-obsidian">
+                </div>
+              </div>
+
+              <!-- Preview -->
+              <div class="flex items-center gap-3 pt-2">
+                <div class="w-16 h-20 bg-white border border-hairline overflow-hidden flex items-center justify-center">
+                  <img id="adminProdPhotoPreview" src="" alt="Preview" class="hidden w-full h-full object-cover">
+                  <span id="adminProdPhotoPlaceholder" class="text-[9px] text-charcoal uppercase">No Image</span>
+                </div>
+                <span class="text-[11px] text-charcoal">High-resolution preview for card and full-page product view.</span>
+              </div>
+            </div>
+
+            <div class="flex gap-3 pt-2">
+              <button id="adminProductSubmitBtn" type="submit" class="flex-1 py-3.5 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+                SAVE PRODUCT
+              </button>
+              <button id="adminCancelEditBtn" type="button" onclick="window.cancelProductEdit()" class="px-6 py-3.5 bg-sand border border-hairline text-xs font-bold uppercase tracking-wider hover:border-obsidian">
+                Cancel Edit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Storewide Sale Quick Tool -->
+        <div class="bg-white border border-hairline p-6">
+          <h4 class="font-serif text-xl font-bold uppercase text-obsidian mb-2">Storewide Promotion Tool</h4>
+          <p class="text-xs text-charcoal mb-4">Apply a promotional discount percentage across the entire catalog or a specific brand house.</p>
+          
+          <div class="flex flex-wrap items-center gap-3">
+            <select id="quickSaleHouse" class="bg-sand border border-hairline px-3 py-2 text-xs font-bold">
+              <option value="All">All Houses (Entire Store)</option>
+              <option value="Hermès">Hermès Paris</option>
+              <option value="Louis Vuitton">Louis Vuitton</option>
+              <option value="Burberry">Burberry London</option>
+            </select>
+            <input type="number" id="quickSalePercent" min="0" max="90" value="15" placeholder="%" class="w-20 bg-sand border border-hairline px-3 py-2 text-xs font-bold">
+            <span class="text-xs font-bold">% OFF</span>
+            <button onclick="executeQuickSale()" class="px-5 py-2 bg-sienna text-white text-xs font-bold uppercase tracking-wider hover:opacity-90">
+              Apply Discount
+            </button>
+            <button onclick="clearAllDiscounts()" class="px-4 py-2 bg-sand border border-hairline text-xs font-bold uppercase tracking-wider text-charcoal hover:border-obsidian">
+              Clear All Discounts
+            </button>
+          </div>
+        </div>
+
+        <!-- Existing Products Table -->
+        <div class="bg-white border border-hairline overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-sand border-b border-hairline text-charcoal uppercase font-bold tracking-wider">
+                <th class="p-3">Photo</th>
+                <th class="p-3">House & Title</th>
+                <th class="p-3">Base Price</th>
+                <th class="p-3">Sale %</th>
+                <th class="p-3">Final EGP</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminProductsTableBody" class="divide-y divide-hairline">
+              <!-- Rendered dynamically via renderAdminProducts() -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- TAB 3: EDIT ALL WEBSITE TEXT & PHOTOS -->
+      <div id="adminTabSiteContent" class="admin-tab-content hidden flex-1 overflow-y-auto p-6 bg-alabaster">
+        <div class="max-w-3xl mx-auto bg-white border border-hairline p-6 md:p-8 space-y-6">
+          <h4 class="font-serif text-2xl font-bold uppercase text-obsidian mb-2">Storefront Content & Brand Photography</h4>
+          <p class="text-xs text-charcoal mb-6">Modify headlines, brand cards, support contact, and courier fee live.</p>
+
+          <form onsubmit="handleSaveSiteContent(event)" class="space-y-6">
+            
+            <!-- Announcement Bar -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Top Announcement Bar Text *</label>
+              <input type="text" id="adminSiteAnnouncement" required class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+            </div>
+
+            <!-- Customer Support Number & Courier Fee -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Customer Support Phone Number *</label>
+                <input type="text" id="adminSiteSupportPhone" required placeholder="+20 100 123 4567" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian font-mono">
+                <span class="text-[10px] text-charcoal mt-1 block">Displayed on footer and Shop Brands menu for inquiries only.</span>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Standard Courier Fee (EGP) *</label>
+                <input type="number" id="adminSiteDeliveryFee" min="0" step="25" value="0" class="w-full bg-sand border border-hairline px-3 py-2 text-xs focus:outline-none focus:border-obsidian">
+                <span class="text-[10px] text-charcoal mt-1 block">Set 0 for complimentary free delivery.</span>
+              </div>
+            </div>
+
+            <!-- Front Hero Picture & Text -->
+            <div class="p-4 bg-sand border border-hairline space-y-3">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-obsidian">Front Hero Campaign Picture & Text</span>
+              
+              <div>
+                <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Hero Main Headline</label>
+                <input type="text" id="adminSiteHeroHeadline" required class="w-full bg-white border border-hairline px-3 py-2 text-xs">
+              </div>
+
+              <div>
+                <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Hero Subtitle</label>
+                <textarea id="adminSiteHeroSubtitle" rows="2" required class="w-full bg-white border border-hairline px-3 py-2 text-xs"></textarea>
+              </div>
+
+              <div>
+                <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Hero Button Label</label>
+                <input type="text" id="adminSiteHeroButton" required class="w-full bg-white border border-hairline px-3 py-2 text-xs">
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div>
+                  <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Upload New Hero Picture</label>
+                  <input type="file" id="adminSiteHeroFileInput" accept="image/*" onchange="handleHeroPhotoUpload(event)" class="w-full bg-white border border-hairline p-2 text-xs">
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase font-semibold text-charcoal mb-1">Or Hero Picture URL</label>
+                  <input type="text" id="adminSiteHeroImageUrl" oninput="handleHeroPhotoUrlInput()" class="w-full bg-white border border-hairline px-3 py-2 text-xs">
+                </div>
+              </div>
+
+              <div class="w-full h-32 bg-white border border-hairline overflow-hidden mt-2">
+                <img id="adminSiteHeroPreview" src="" alt="Hero Preview" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+            <!-- 3 "Shop By Brand" Cards Editor -->
+            <div class="p-4 bg-sand border border-hairline space-y-4">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-obsidian">3 "Shop by Brand" Cards Content & Photos</span>
+
+              <!-- Hermès Card -->
+              <div class="p-3 bg-white border border-hairline space-y-2">
+                <span class="font-bold text-xs uppercase text-obsidian">1. Shop Hermès Card</span>
+                <input type="text" id="adminCardTitleHermes" placeholder="Card Title" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <input type="text" id="adminCardSubHermes" placeholder="Card Subtitle" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <div class="flex gap-2">
+                  <input type="file" accept="image/*" onchange="handleBrandCardPhotoUpload(event, 'Hermès')" class="w-1/2 bg-sand border border-hairline p-1 text-xs">
+                  <input type="text" id="adminCardImgHermes" placeholder="Image URL" oninput="handleBrandCardPhotoUrl('Hermès')" class="w-1/2 bg-sand border border-hairline px-2 py-1 text-xs">
+                </div>
+              </div>
+
+              <!-- Louis Vuitton Card -->
+              <div class="p-3 bg-white border border-hairline space-y-2">
+                <span class="font-bold text-xs uppercase text-obsidian">2. Shop Louis Vuitton Card</span>
+                <input type="text" id="adminCardTitleLV" placeholder="Card Title" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <input type="text" id="adminCardSubLV" placeholder="Card Subtitle" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <div class="flex gap-2">
+                  <input type="file" accept="image/*" onchange="handleBrandCardPhotoUpload(event, 'LV')" class="w-1/2 bg-sand border border-hairline p-1 text-xs">
+                  <input type="text" id="adminCardImgLV" placeholder="Image URL" oninput="handleBrandCardPhotoUrl('LV')" class="w-1/2 bg-sand border border-hairline px-2 py-1 text-xs">
+                </div>
+              </div>
+
+              <!-- Burberry Card -->
+              <div class="p-3 bg-white border border-hairline space-y-2">
+                <span class="font-bold text-xs uppercase text-obsidian">3. Shop Burberry Card</span>
+                <input type="text" id="adminCardTitleBurberry" placeholder="Card Title" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <input type="text" id="adminCardSubBurberry" placeholder="Card Subtitle" class="w-full bg-sand border border-hairline px-2.5 py-1.5 text-xs">
+                <div class="flex gap-2">
+                  <input type="file" accept="image/*" onchange="handleBrandCardPhotoUpload(event, 'Burberry')" class="w-1/2 bg-sand border border-hairline p-1 text-xs">
+                  <input type="text" id="adminCardImgBurberry" placeholder="Image URL" oninput="handleBrandCardPhotoUrl('Burberry')" class="w-1/2 bg-sand border border-hairline px-2 py-1 text-xs">
+                </div>
+              </div>
+            </div>
+
+            <!-- Brand Story & Footer Text -->
+            <div class="space-y-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Maison Story Section Headline</label>
+                <input type="text" id="adminSiteStoryTitle" required class="w-full bg-sand border border-hairline px-3 py-2 text-xs">
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Maison Story Description</label>
+                <textarea id="adminSiteStoryText" rows="2" required class="w-full bg-sand border border-hairline px-3 py-2 text-xs"></textarea>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-obsidian mb-1">Footer Brand Text</label>
+                <textarea id="adminSiteFooterText" rows="2" required class="w-full bg-sand border border-hairline px-3 py-2 text-xs"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors">
+              Save Website Content
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 4: SAVE & EXPORT WEBSITE HTML -->
+      <div id="adminTabExport" class="admin-tab-content hidden flex-1 overflow-y-auto p-6 bg-alabaster">
+        <div class="max-w-2xl mx-auto space-y-6">
+          
+          <div class="bg-white border-2 border-obsidian p-8 space-y-4">
+            <h4 class="font-serif text-2xl font-bold uppercase text-obsidian">Download Updated Website (index.html)</h4>
+            <p class="text-xs text-charcoal leading-relaxed">
+              Export the entire single-file luxury website with all current products, orders, edited text, uploaded photos, and settings baked directly into the code. This file can be hosted anywhere with zero external dependencies.
+            </p>
+            <button onclick="downloadUpdatedWebsiteHtml()" class="w-full py-4 bg-obsidian text-white text-xs font-bold uppercase tracking-widest hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2">
+              <i data-lucide="download" class="w-4 h-4 text-amber-300"></i>
+              <span>Download Standalone index.html</span>
+            </button>
+          </div>
+
+          <div class="bg-white border border-hairline p-8 space-y-4">
+            <h4 class="font-serif text-xl font-bold uppercase text-obsidian">Database & Demo Reset</h4>
+            <p class="text-xs text-charcoal leading-relaxed">
+              Reset orders or restore the 14 authentic Hermès, Louis Vuitton, and Burberry scarves to default catalog.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="resetDefaultOrders()" class="px-4 py-2.5 bg-sand border border-hairline text-xs font-bold uppercase tracking-wider text-charcoal hover:border-obsidian">
+                Reset Demo Orders
+              </button>
+              <button onclick="resetDefaultCatalog()" class="px-4 py-2.5 bg-sand border border-hairline text-xs font-bold uppercase tracking-wider text-red-700 hover:border-red-700">
+                Reset Catalog to Defaults
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[70] hidden bg-obsidian text-white border border-hairlineDark px-5 py-3.5 text-xs font-bold uppercase tracking-wider shadow-2xl flex items-center gap-3">
+    <i id="toastIcon" data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toastMessage">Action completed successfully</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: STORE STATE & CONTROLLER                                      -->
+  <!-- ========================================================================= -->
+  <script>
+    /**
+     * 14 REAL AUTHENTIC LUXURY SCARVES (HERMÈS, LOUIS VUITTON, BURBERRY)
+     */
+    const DEFAULT_PRODUCTS = [
+      {
+        id: 'bur-01',
+        title: 'Burberry Vintage Check Cashmere-Silk Scarf',
+        house: 'Burberry',
+        material: '100% Cashmere-Silk Blend • Hand-Fringed',
+        dimensions: '200 × 90 cm',
+        basePrice: 28500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-VINTAGE',
+        description: 'The definitive Burberry archival check woven from ultra-fine cashmere and mulberry silk with tactile fringe. Arrives with official luxury gift packaging, London envelope, and authenticity seals.'
+      },
+      {
+        id: 'her-01',
+        title: 'Hermès Paris H-En-Biais Cashmere Stole',
+        house: 'Hermès',
+        material: '70% Cashmere, 30% Silk Twill',
+        dimensions: '200 × 100 cm',
+        basePrice: 41000,
+        discountPercent: 20,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.09_47cd006f.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-HER-BIAIS-CHOC',
+        description: 'Exquisite Hermès Paris jacquard woven stole in deep espresso bronze and golden taupe. Features the iconic H en biais graphic monogram with signature hand-finished hems and orange maison tag.'
+      },
+      {
+        id: 'her-02',
+        title: 'Hermès Paris H-Drapé Pure Silk Shawl',
+        house: 'Hermès',
+        material: '100% Silk Jacquard • Hand-Rolled Edges',
+        dimensions: '140 × 140 cm',
+        basePrice: 38500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.07_69b5d582.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-HER-DRAPE-IVORY',
+        description: 'Rare pure ivory white silk jacquard shawl featuring the majestic Hermès Paris carriage emblem woven delicately into the lustrous fabric. Unmatched lightness and luminous drape.'
+      },
+      {
+        id: 'bur-02',
+        title: 'Burberry Check Lightweight Silk Scarf',
+        house: 'Burberry',
+        material: '100% Mulberry Silk Twill',
+        dimensions: '190 × 70 cm',
+        basePrice: 24000,
+        discountPercent: 15,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.09_90611665.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-SKYBLUE',
+        description: 'Fresh celestial sky-blue iteration of the heritage house check. Printed on featherlight mulberry silk twill with delicate fringed ends and gift presentation bag.'
+      },
+      {
+        id: 'lv-01',
+        title: 'Louis Vuitton Monogram Shine Shawl',
+        house: 'Louis Vuitton',
+        material: '60% Silk, 40% Wool Lurex',
+        dimensions: '142 × 142 cm',
+        basePrice: 34000,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.25_16d9e8f7.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-LV-SHINE-CHOC',
+        description: 'The opulent Monogram Shine shawl in rich espresso brown shot through with subtle metallic sheen. Reversible contrast weave with fringed borders.'
+      },
+      {
+        id: 'her-03',
+        title: 'Hermès Paris Calèche Gilded Jacquard Shawl',
+        house: 'Hermès',
+        material: 'Cashmere & Silk Twill • Hand-Rolled',
+        dimensions: '140 × 140 cm',
+        basePrice: 39200,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.08_598795e7.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-HER-CALECHE-GOLD',
+        description: 'Desert camel and molten antique gold cashmere-silk blend. Accented with the historic Hermès Calèche medallion and equestrian harness motifs.'
+      },
+      {
+        id: 'lv-02',
+        title: 'Louis Vuitton Monogram Classic Carré',
+        house: 'Louis Vuitton',
+        material: '60% Silk, 40% Wool Jacquard',
+        dimensions: '140 × 140 cm',
+        basePrice: 32500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.22_b1af7577.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-LV-CLASSIC-SQUARE',
+        description: 'Tonal hazelnut and warm caramel silk-wool square. The eternal Louis Vuitton Monogram pattern woven with supreme geometric accuracy.'
+      },
+      {
+        id: 'bur-03',
+        title: 'Burberry Check Jacquard Silk Stole',
+        house: 'Burberry',
+        material: '100% Pure Silk Jacquard',
+        dimensions: '220 × 70 cm',
+        basePrice: 26500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.12_f0191bb7.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-ROYALBLUE',
+        description: 'Deep royal and Mediterranean blue tonal check. A statement stole with substantial hand, lustrous silk drape, and authentic tag.'
+      },
+      {
+        id: 'her-04',
+        title: 'Hermès Paris Grand H Blush Carré',
+        house: 'Hermès',
+        material: '100% Pure Silk Twill • Hand-Rolled',
+        dimensions: '90 × 90 cm',
+        basePrice: 29000,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.05_7aa81a3e.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-HER-BLUSH-90',
+        description: 'Ethereal powder blush pink silk twill with tone-on-tone Grand H centerpiece. Finished with Hermès signature roulotté hand-rolled edges.'
+      },
+      {
+        id: 'bur-04',
+        title: 'Burberry Rose Petal Heritage Check Scarf',
+        house: 'Burberry',
+        material: '100% Fine Mulberry Silk',
+        dimensions: '190 × 70 cm',
+        basePrice: 23800,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.17_7e7659fa.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-ROSECHECK',
+        description: 'Soft rose blush and warm camel tartan check. Effortlessly feminine and lightweight for Egyptian seasons.'
+      },
+      {
+        id: 'lv-03',
+        title: 'Louis Vuitton Monogram So Shine Pearl Shawl',
+        house: 'Louis Vuitton',
+        material: '50% Silk, 30% Wool, 20% Metallic',
+        dimensions: '142 × 142 cm',
+        basePrice: 36000,
+        discountPercent: 10,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.24_58bd503a.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-LV-PEARLSHINE',
+        description: 'Luminous pearl champagne and iridescent white monogram shawl. Catches candlelight and gala illumination with discrete glamour.'
+      },
+      {
+        id: 'bur-05',
+        title: 'Burberry Wisteria Lilac Check Silk Wrap',
+        house: 'Burberry',
+        material: '100% Mulberry Silk Twill',
+        dimensions: '200 × 70 cm',
+        basePrice: 25200,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.14_c58688b9.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-WISTERIA',
+        description: 'Dusty wisteria lilac and taupe check on mulberry silk. Complete with signature London packaging envelope and seals.'
+      },
+      {
+        id: 'lv-04',
+        title: 'Louis Vuitton Monogram Denim Anthracite Shawl',
+        house: 'Louis Vuitton',
+        material: '60% Silk, 40% Wool',
+        dimensions: '140 × 140 cm',
+        basePrice: 33500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.23_0502cbb3.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'Paris, France',
+        sku: 'LAYL-LV-DENIM-SILVER',
+        description: 'Sleek anthracite and silver-tone monogram denim shawl. A modern architectural classic with contrast black border and fringe.'
+      },
+      {
+        id: 'bur-06',
+        title: 'Burberry Monochrome Tartan Silk Scarf',
+        house: 'Burberry',
+        material: '100% Silk-Wool Blend',
+        dimensions: '180 × 70 cm',
+        basePrice: 22500,
+        discountPercent: 0,
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.16_cef9a3ed.jpeg',
+        stockStatus: 'in_stock',
+        origin: 'London, United Kingdom',
+        sku: 'LAYL-BUR-MONOCHROME',
+        description: 'Crisp alabaster and midnight black geometric tartan. Refined minimal contrast that complements monochrome styling.'
+      }
+    ];
+
+    /**
+     * INITIAL SITE & STOREFRONT SETTINGS
+     */
+    const DEFAULT_SETTINGS = {
+      supportPhone: '+20 100 123 4567',
+      deliveryFee: 0,
+      announcementText: 'COMPLIMENTARY PRIVATE COURIER DELIVERY ACROSS CAIRO & ALL OVER EGYPT | 100% AUTHENTICATED GLOBAL IMPORTS',
+      heroHeadline: 'GLOBAL HERITAGE. CURATED FOR CAIRO.',
+      heroSubtitle: 'Directly imported authentic silk twill, cashmere stoles, and jacquard shawls from the heritage archives of Hermès, Louis Vuitton, and Burberry. Preserved in Cairo with white-glove courier delivery.',
+      heroButtonText: 'Shop All',
+      heroImage: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg',
+      cardHermes: {
+        title: 'SHOP HERMÈS',
+        subtitle: 'Pure silk twill carré, calèche jacquard & cashmere stoles with signature hand-rolled roulotté hems.',
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.51.07_69b5d582.jpeg'
+      },
+      cardLV: {
+        title: 'SHOP LOUIS VUITTON',
+        subtitle: 'Monogram shine, classic denim & silk-wool shawls in rich espresso, champagne, and anthracite.',
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.50.25_16d9e8f7.jpeg'
+      },
+      cardBurberry: {
+        title: 'SHOP BURBERRY',
+        subtitle: 'Archival vintage tartan, cashmere-silk wraps, and lightweight silk foulards complete with London packaging.',
+        image: '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg'
+      },
+      storyTitle: 'HOW WE BRING GLOBAL LUXURY HERITAGE TO CAIRO',
+      storyText: 'Every headscarf in the LAYL collection is hand-selected from flagship salons in Paris, Milan, and London. We believe luxury in Egypt should never come with doubt, delay, or customs uncertainty.',
+      footerText: 'The exclusive Egyptian destination for authenticated luxury headscarves from Hermès, Louis Vuitton, and Burberry. Available exclusively online for private courier delivery.'
+    };
+
+    /**
+     * DEMO INITIAL ORDERS (Pre-loaded for live testing)
+     */
+    const DEFAULT_ORDERS = [
+      {
+        id: 'LAYL-1001',
+        createdAt: '2026-10-28 14:15',
+        customer: {
+          firstName: 'Farida',
+          lastName: 'El-Shazly',
+          primaryPhone: '01012345678',
+          backupPhone: '01287654321',
+          city: 'Zamalek',
+          address: '14 Hassan Sabry Street, Building 5, 2nd Floor, Apt 4',
+          landmark: 'Beside Gezira Club Gate 2'
+        },
+        paymentMethod: 'Cash on Delivery',
+        items: [
+          {
+            product: DEFAULT_PRODUCTS[0],
+            quantity: 1
+          }
+        ],
+        subtotal: 28500,
+        deliveryFee: 0,
+        total: 28500,
+        status: 'Being Prepared'
+      }
+    ];
+
+    // Global Store State
+    let products = [];
+    let settings = { ...DEFAULT_SETTINGS };
+    let orders = [];
+    let cart = [];
+    let currentHouseFilter = 'All';
+    let onSaleOnly = false;
+    let currentSort = 'featured';
+    let currentAdminOrderFilter = 'All';
+    let selectedQuickViewProduct = null;
+    let selectedProductQty = 1;
+    let lastConfirmedOrderId = null;
+
+    /**
+     * INITIALIZATION & LOCALSTORAGE HYDRATION
+     */
+    function initStore() {
+      // Products
+      try {
+        const savedProducts = localStorage.getItem('layl_products_catalog');
+        products = savedProducts ? JSON.parse(savedProducts) : [...DEFAULT_PRODUCTS];
+      } catch (e) {
+        products = [...DEFAULT_PRODUCTS];
+      }
+
+      // Settings
+      try {
+        const savedSettings = localStorage.getItem('layl_store_settings');
+        settings = savedSettings ? { ...DEFAULT_SETTINGS, ...JSON.parse(savedSettings) } : { ...DEFAULT_SETTINGS };
+        if (settings.storyText && /vault/i.test(settings.storyText)) {
+          settings.storyText = settings.storyText.replace(/vault/gi, 'collection');
+        }
+      } catch (e) {
+        settings = { ...DEFAULT_SETTINGS };
+      }
+
+      // Orders
+      try {
+        const savedOrders = localStorage.getItem('layl_orders');
+        orders = savedOrders ? JSON.parse(savedOrders) : [...DEFAULT_ORDERS];
+      } catch (e) {
+        orders = [...DEFAULT_ORDERS];
+      }
+
+      // Cart
+      try {
+        const savedCart = localStorage.getItem('layl_cart');
+        cart = savedCart ? JSON.parse(savedCart) : [];
+      } catch (e) {
+        cart = [];
+      }
+
+      applySettingsToDOM();
+      renderProductGrid();
+      updateCartUI();
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function saveProductsToStorage() {
+      try { localStorage.setItem('layl_products_catalog', JSON.stringify(products)); } catch (e) {}
+    }
+
+    function saveSettingsToStorage() {
+      try { localStorage.setItem('layl_store_settings', JSON.stringify(settings)); } catch (e) {}
+    }
+
+    function saveOrdersToStorage() {
+      try { localStorage.setItem('layl_orders', JSON.stringify(orders)); } catch (e) {}
+    }
+
+    function saveCartToStorage() {
+      try { localStorage.setItem('layl_cart', JSON.stringify(cart)); } catch (e) {}
+    }
+
+    function applySettingsToDOM() {
+      document.getElementById('announcementText').textContent = settings.announcementText;
+      document.getElementById('heroHeadlineDisplay').textContent = settings.heroHeadline;
+      document.getElementById('heroSubheadlineDisplay').textContent = settings.heroSubtitle;
+      document.getElementById('heroButtonDisplay').textContent = settings.heroButtonText;
+      document.getElementById('heroImageDisplay').src = settings.heroImage;
+
+      // Brand Cards
+      document.getElementById('brandCardTitleHermes').textContent = settings.cardHermes.title;
+      document.getElementById('brandCardSubHermes').textContent = settings.cardHermes.subtitle;
+      document.getElementById('brandCardImageHermes').src = settings.cardHermes.image;
+
+      document.getElementById('brandCardTitleLV').textContent = settings.cardLV.title;
+      document.getElementById('brandCardSubLV').textContent = settings.cardLV.subtitle;
+      document.getElementById('brandCardImageLV').src = settings.cardLV.image;
+
+      document.getElementById('brandCardTitleBurberry').textContent = settings.cardBurberry.title;
+      document.getElementById('brandCardSubBurberry').textContent = settings.cardBurberry.subtitle;
+      document.getElementById('brandCardImageBurberry').src = settings.cardBurberry.image;
+
+      // Story & Footer
+      document.getElementById('brandStoryTitleDisplay').textContent = settings.storyTitle;
+      document.getElementById('brandStoryTextDisplay').textContent = settings.storyText;
+      document.getElementById('footerTextDisplay').textContent = settings.footerText;
+      document.getElementById('footerSupportPhone').textContent = settings.supportPhone;
+      document.getElementById('supportPhoneDisplay').textContent = settings.supportPhone;
+    }
+
+    function resetToHome(e) {
+      if (e) e.preventDefault();
+      resetAllFilters();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * PRICE & CURRENCY FORMATTERS
+     */
+    function calculateDiscountedPrice(basePrice, discountPercent) {
+      if (!discountPercent || discountPercent <= 0) return Math.round(basePrice);
+      const discount = Math.min(Math.max(discountPercent, 0), 90);
+      return Math.round(basePrice * (1 - discount / 100));
+    }
+
+    function formatEGP(amount) {
+      return `EGP ${Math.round(amount).toLocaleString('en-US')}`;
+    }
+
+    /**
+     * LEFT "SHOP BRANDS" MENU DRAWER
+     */
+    function openMenuDrawer() {
+      document.getElementById('menuDrawer').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeMenuDrawer() {
+      document.getElementById('menuDrawer').classList.add('hidden');
+    }
+
+    /**
+     * HIDDEN KEYPAD (STRICT RULE: Working PIN 0000, NO hint anywhere on screen)
+     */
+    function openKeypadModal() {
+      closeMenuDrawer();
+      document.getElementById('keypadPinInput').value = '';
+      document.getElementById('keypadErrorMsg').classList.add('hidden');
+      document.getElementById('keypadModal').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('keypadPinInput').focus();
+      }, 100);
+    }
+
+    function closeKeypadModal() {
+      document.getElementById('keypadModal').classList.add('hidden');
+    }
+
+    function handleKeypadSubmit(e) {
+      e.preventDefault();
+      const pin = document.getElementById('keypadPinInput').value.trim();
+      const errorMsg = document.getElementById('keypadErrorMsg');
+
+      // Hidden check: 0000
+      if (pin === '0000') {
+        closeKeypadModal();
+        openOwnerPortal();
+        showToast('Portal Access Granted');
+      } else {
+        errorMsg.classList.remove('hidden');
+      }
+    }
+
+    /**
+     * PRODUCT GRID (MAX 3 COLUMNS ON DESKTOP, GENEROUS SPACING)
+     */
+    function renderProductGrid() {
+      const grid = document.getElementById('productGrid');
+      const emptyState = document.getElementById('emptyCatalogState');
+      const titleEl = document.getElementById('catalogActiveTitle');
+
+      let filtered = [...products];
+
+      if (currentHouseFilter !== 'All') {
+        filtered = filtered.filter(p => p.house.toLowerCase() === currentHouseFilter.toLowerCase());
+        titleEl.textContent = `${currentHouseFilter.toUpperCase()} FOULARDS`;
+      } else {
+        titleEl.textContent = 'ALL HERITAGE FOULARDS';
+      }
+
+      if (onSaleOnly) {
+        filtered = filtered.filter(p => p.discountPercent > 0);
+        titleEl.textContent += ' • SALE';
+      }
+
+      if (currentSort === 'price-asc') {
+        filtered.sort((a, b) => calculateDiscountedPrice(a.basePrice, a.discountPercent) - calculateDiscountedPrice(b.basePrice, b.discountPercent));
+      } else if (currentSort === 'price-desc') {
+        filtered.sort((a, b) => calculateDiscountedPrice(b.basePrice, b.discountPercent) - calculateDiscountedPrice(a.basePrice, a.discountPercent));
+      } else if (currentSort === 'name-asc') {
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((product, index) => {
+        const finalPrice = calculateDiscountedPrice(product.basePrice, product.discountPercent);
+        const isOnSale = product.discountPercent > 0;
+        const isSoldOut = product.stockStatus === 'sold_out';
+        const staggerDelayMs = (index % 3) * 90;
+
+        return `
+          <article 
+            class="product-card product-card-reveal group bg-alabaster border border-hairline flex flex-col justify-between p-6 sm:p-8 hover:border-obsidian hover:shadow-lg"
+            style="transition-delay: ${staggerDelayMs}ms;"
+            data-stagger-delay="${staggerDelayMs}"
+          >
+            <div>
+              <!-- Top Card Meta -->
+              <div class="flex items-center justify-between mb-4 text-xs font-bold uppercase tracking-wider text-charcoal">
+                <span class="text-obsidian">${product.house.toUpperCase()}</span>
+                ${isOnSale ? `
+                  <span class="bg-sienna text-white text-[10px] font-bold px-2.5 py-0.5 tracking-widest">
+                    -${product.discountPercent}% OFF
+                  </span>
+                ` : `
+                  <span class="text-[10px] text-charcoal/70">100% AUTHENTIC</span>
+                `}
+              </div>
+
+              <!-- Portrait Scarf Photography with Sharp Frame -->
+              <div class="zoom-container aspect-[3/4] bg-sand border border-hairline relative mb-6 cursor-pointer" onclick="quickViewProduct('${product.id}')">
+                <img 
+                  src="${product.image}" 
+                  alt="${product.title}" 
+                  loading="lazy" 
+                  class="w-full h-full object-cover object-center ${isSoldOut ? 'opacity-50 grayscale' : ''}"
+                  onerror="this.onerror=null; this.src='/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg';"
+                />
+
+                ${isSoldOut ? `
+                  <div class="absolute inset-0 bg-obsidian/60 flex items-center justify-center">
+                    <span class="bg-white text-obsidian text-xs font-bold uppercase tracking-widest px-4 py-2 border border-obsidian">
+                      SOLD OUT
+                    </span>
+                  </div>
+                ` : `
+                  <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="bg-white/95 text-obsidian text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 border border-hairline shadow-sm">
+                      Inspect Piece
+                    </span>
+                  </div>
+                `}
+              </div>
+
+              <!-- Product Details -->
+              <div class="space-y-2 mb-6">
+                <span class="block text-xs text-charcoal uppercase tracking-wider font-medium truncate">
+                  ${product.material}
+                </span>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-obsidian leading-snug group-hover:text-charcoal transition-colors">
+                  <button onclick="quickViewProduct('${product.id}')" class="text-left hover:underline">
+                    ${product.title}
+                  </button>
+                </h3>
+              </div>
+            </div>
+
+            <!-- Pricing & Action Buttons -->
+            <div class="pt-4 border-t border-hairline mt-2">
+              <div class="flex items-baseline justify-between mb-4">
+                <div>
+                  <span class="text-base font-bold text-obsidian tracking-tight">${formatEGP(finalPrice)}</span>
+                  ${isOnSale ? `
+                    <span class="text-xs line-through text-charcoal ml-2">${formatEGP(product.basePrice)}</span>
+                  ` : ''}
+                </div>
+                <span class="text-xs uppercase font-semibold text-charcoal">
+                  ${product.dimensions}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <button 
+                  onclick="quickViewProduct('${product.id}')" 
+                  class="py-3 text-center text-[11px] font-bold uppercase tracking-widest border border-hairline text-obsidian bg-sand hover:border-obsidian hover:bg-white transition-all"
+                >
+                  Details
+                </button>
+                <button 
+                  onclick="addToCart('${product.id}')" 
+                  ${isSoldOut ? 'disabled' : ''}
+                  class="py-3 text-center text-[11px] font-bold uppercase tracking-widest ${isSoldOut ? 'bg-zinc-300 text-zinc-500 cursor-not-allowed' : 'bg-obsidian text-white hover:bg-zinc-800'} transition-colors"
+                >
+                  ${isSoldOut ? 'Sold Out' : 'Add to Bag'}
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      observeProductCards();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    let productScrollObserver = null;
+
+    function observeProductCards() {
+      const cards = document.querySelectorAll('#productGrid .product-card-reveal');
+      if (!cards.length) return;
+
+      if (productScrollObserver) {
+        productScrollObserver.disconnect();
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        cards.forEach(card => {
+          card.classList.add('is-visible');
+          card.style.transitionDelay = '0ms';
+        });
+        return;
+      }
+
+      productScrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            card.classList.add('is-visible');
+            const delay = parseInt(card.getAttribute('data-stagger-delay') || '0', 10);
+            setTimeout(() => {
+              card.style.transitionDelay = '0ms';
+            }, delay + 850);
+            observer.unobserve(card);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      cards.forEach(card => productScrollObserver.observe(card));
+    }
+
+    function setHouseFilter(house) {
+      currentHouseFilter = house;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === house) {
+          btn.className = 'filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-transparent bg-obsidian text-white';
+        } else {
+          btn.className = 'filter-btn px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-hairline bg-sand text-charcoal hover:border-obsidian';
+        }
+      });
+      renderProductGrid();
+
+      // Smooth scroll to catalog
+      const el = document.getElementById('catalogSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleSaleFilterOnly() {
+      onSaleOnly = !onSaleOnly;
+      const btn = document.getElementById('catalogSaleToggle');
+      if (onSaleOnly) {
+        btn.classList.add('bg-sienna', 'text-white', 'border-sienna');
+        btn.classList.remove('bg-sand', 'text-charcoal');
+      } else {
+        btn.classList.remove('bg-sienna', 'text-white', 'border-sienna');
+        btn.classList.add('bg-sand', 'text-charcoal');
+      }
+      renderProductGrid();
+      const el = document.getElementById('catalogSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function handleSortChange(e) {
+      currentSort = e.target.value;
+      renderProductGrid();
+    }
+
+    function resetAllFilters() {
+      currentHouseFilter = 'All';
+      onSaleOnly = false;
+      const saleBtn = document.getElementById('catalogSaleToggle');
+      if (saleBtn) {
+        saleBtn.classList.remove('bg-sienna', 'text-white');
+        saleBtn.classList.add('bg-sand', 'text-charcoal');
+      }
+      setHouseFilter('All');
+    }
+
+    /**
+     * SHOPPING BAG DRAWER
+     */
+    function addToCart(productId, qty = 1) {
+      const prod = products.find(p => String(p.id) === String(productId));
+      if (!prod) return;
+
+      const addQty = Math.max(1, parseInt(qty, 10) || 1);
+      const existing = cart.find(item => String(item.product.id) === String(productId));
+      if (existing) {
+        existing.quantity += addQty;
+      } else {
+        cart.push({ product: prod, quantity: addQty });
+      }
+
+      saveCartToStorage();
+      updateCartUI();
+      showToast(`Added ${prod.title} to Bag`);
+      openCartDrawer();
+    }
+
+    function updateCartQuantity(productId, delta) {
+      const item = cart.find(i => String(i.product.id) === String(productId));
+      if (!item) return;
+
+      item.quantity += delta;
+      if (item.quantity <= 0) {
+        cart = cart.filter(i => String(i.product.id) !== String(productId));
+      }
+
+      saveCartToStorage();
+      updateCartUI();
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(i => String(i.product.id) !== String(productId));
+      saveCartToStorage();
+      updateCartUI();
+      showToast('Item removed from Bag');
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('headerCartCount');
+      const drawerCountEl = document.getElementById('cartDrawerCount');
+      const prodPageCountEl = document.getElementById('productPageBagCount');
+      const itemsContainer = document.getElementById('cartItemsContainer');
+      const emptyView = document.getElementById('emptyCartView');
+      const footerView = document.getElementById('cartFooterView');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const totalEl = document.getElementById('cartTotal');
+      const deliveryFeeEl = document.getElementById('cartDeliveryFee');
+
+      let totalCount = 0;
+      let totalAmount = 0;
+
+      cart.forEach(item => {
+        totalCount += item.quantity;
+        const price = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
+        totalAmount += price * item.quantity;
+      });
+
+      if (countEl) countEl.textContent = totalCount;
+      if (drawerCountEl) drawerCountEl.textContent = totalCount;
+      if (prodPageCountEl) prodPageCountEl.textContent = totalCount;
+
+      if (cart.length === 0) {
+        emptyView.classList.remove('hidden');
+        footerView.classList.add('hidden');
+        itemsContainer.innerHTML = '';
+        return;
+      }
+
+      emptyView.classList.add('hidden');
+      footerView.classList.remove('hidden');
+
+      const fee = settings.deliveryFee || 0;
+      subtotalEl.textContent = formatEGP(totalAmount);
+      deliveryFeeEl.textContent = fee === 0 ? 'COMPLIMENTARY' : formatEGP(fee);
+      totalEl.textContent = formatEGP(totalAmount + fee);
+
+      itemsContainer.innerHTML = cart.map(item => {
+        const unitPrice = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
+        return `
+          <div class="py-4 flex gap-4 items-start">
+            <div class="w-20 aspect-[3/4] bg-sand border border-hairline overflow-hidden shrink-0">
+              <img src="${item.product.image}" alt="${item.product.title}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 flex flex-col justify-between min-h-[5.5rem]">
+              <div>
+                <span class="text-[10px] uppercase font-bold tracking-widest text-charcoal block">${item.product.house}</span>
+                <h4 class="font-serif text-sm font-bold text-obsidian uppercase leading-tight">${item.product.title}</h4>
+                <span class="text-xs font-bold text-obsidian mt-1 block">${formatEGP(unitPrice)}</span>
+              </div>
+              <div class="flex items-center justify-between mt-3 pt-2 border-t border-hairline/60">
+                <div class="flex items-center border border-hairline bg-white">
+                  <button onclick="updateCartQuantity('${item.product.id}', -1)" class="px-2.5 py-1 text-xs hover:bg-sand font-bold">-</button>
+                  <span class="px-3 text-xs font-bold">${item.quantity}</span>
+                  <button onclick="updateCartQuantity('${item.product.id}', 1)" class="px-2.5 py-1 text-xs hover:bg-sand font-bold">+</button>
+                </div>
+                <button onclick="removeFromCart('${item.product.id}')" class="text-[11px] text-charcoal hover:text-red-700 font-semibold underline">
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function openCartDrawer() {
+      updateCartUI();
+      document.getElementById('cartDrawer').classList.remove('hidden');
+    }
+
+    function closeCartDrawer() {
+      document.getElementById('cartDrawer').classList.add('hidden');
+    }
+
+    /**
+     * FULL-SCREEN DEDICATED PRODUCT PAGE CONTROLLER
+     */
+    function quickViewProduct(productId) {
+      const prod = products.find(p => String(p.id) === String(productId));
+      if (!prod) return;
+
+      selectedQuickViewProduct = prod;
+      selectedProductQty = 1;
+      const qtyDisplay = document.getElementById('productPageQtyDisplay');
+      if (qtyDisplay) qtyDisplay.textContent = '1';
+
+      const modal = document.getElementById('productModal');
+      const modalImg = document.getElementById('modalProductImage');
+      const modalHouse = document.getElementById('modalProductHouse');
+      const modalSku = document.getElementById('modalProductSku');
+      const modalTitle = document.getElementById('modalProductTitle');
+      const modalDiscPrice = document.getElementById('modalDiscountedPrice');
+      const modalOrigPrice = document.getElementById('modalOriginalPrice');
+      const modalDiscBadge = document.getElementById('modalDiscountBadge');
+      const modalSaleTag = document.getElementById('modalSaleTag');
+      const modalMat = document.getElementById('modalProductMaterial');
+      const modalDim = document.getElementById('modalProductDimensions');
+      const modalOrigin = document.getElementById('modalProductOrigin');
+      const modalStock = document.getElementById('modalProductStock');
+      const modalDesc = document.getElementById('modalProductDescription');
+      const addBtn = document.getElementById('modalAddToBagBtn');
+
+      modalImg.src = prod.image;
+      modalHouse.textContent = prod.house.toUpperCase();
+      modalSku.textContent = `SKU: ${prod.sku}`;
+      modalTitle.textContent = prod.title;
+
+      const finalPrice = calculateDiscountedPrice(prod.basePrice, prod.discountPercent);
+      modalDiscPrice.textContent = formatEGP(finalPrice);
+
+      if (prod.discountPercent > 0) {
+        modalOrigPrice.textContent = formatEGP(prod.basePrice);
+        modalOrigPrice.classList.remove('hidden');
+        modalDiscBadge.textContent = `${prod.discountPercent}% OFF`;
+        modalDiscBadge.classList.remove('hidden');
+        modalSaleTag.classList.remove('hidden');
+      } else {
+        modalOrigPrice.classList.add('hidden');
+        modalDiscBadge.classList.add('hidden');
+        modalSaleTag.classList.add('hidden');
+      }
+
+      modalMat.textContent = prod.material;
+      modalDim.textContent = prod.dimensions;
+      modalOrigin.textContent = prod.origin || 'Paris / London';
+      modalDesc.textContent = prod.description;
+
+      if (prod.stockStatus === 'sold_out') {
+        modalStock.textContent = 'SOLD OUT';
+        modalStock.className = 'px-2.5 py-1 border border-red-800/30 bg-red-50 text-red-800 text-[10px] font-bold uppercase tracking-widest';
+        addBtn.disabled = true;
+        addBtn.textContent = 'SOLD OUT';
+        addBtn.classList.add('bg-zinc-400', 'cursor-not-allowed');
+      } else {
+        modalStock.textContent = 'IN STOCK';
+        modalStock.className = 'px-2.5 py-1 border border-emerald-800/30 bg-emerald-50 text-emerald-900 text-[10px] font-bold uppercase tracking-widest';
+        addBtn.disabled = false;
+        addBtn.innerHTML = `<i data-lucide="shopping-bag" class="w-4 h-4"></i><span>ADD TO BAG</span>`;
+        addBtn.classList.remove('bg-zinc-400', 'cursor-not-allowed');
+      }
+
+      updateCartUI();
+      modal.classList.remove('hidden');
+      modal.scrollTo({ top: 0, behavior: 'instant' });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function adjustProductPageQty(delta) {
+      selectedProductQty = Math.max(1, selectedProductQty + delta);
+      const qtyDisplay = document.getElementById('productPageQtyDisplay');
+      if (qtyDisplay) qtyDisplay.textContent = String(selectedProductQty);
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.add('hidden');
+      selectedQuickViewProduct = null;
+    }
+
+    function modalAddToCart() {
+      if (selectedQuickViewProduct) {
+        addToCart(selectedQuickViewProduct.id, selectedProductQty);
+      }
+    }
+
+    /**
+     * SHOPIFY-STYLE DIRECT CHECKOUT CONTROLLER
+     */
+    function proceedToShopifyCheckout() {
+      if (cart.length === 0) return;
+      closeCartDrawer();
+
+      renderCheckoutSummary();
+      document.getElementById('shopifyCheckoutView').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    function closeShopifyCheckout() {
+      document.getElementById('shopifyCheckoutView').classList.add('hidden');
+    }
+
+    function renderCheckoutSummary() {
+      const listEl = document.getElementById('checkoutItemsList');
+      const subtotalEl = document.getElementById('checkoutSummarySubtotal');
+      const shippingEl = document.getElementById('checkoutSummaryShipping');
+      const totalEl = document.getElementById('checkoutSummaryTotal');
+      const shippingDisplay = document.getElementById('checkoutShippingFeeDisplay');
+
+      let subtotal = 0;
+      cart.forEach(item => {
+        const price = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
+        subtotal += price * item.quantity;
+      });
+
+      const deliveryFee = settings.deliveryFee || 0;
+      const total = subtotal + deliveryFee;
+
+      subtotalEl.textContent = formatEGP(subtotal);
+      shippingEl.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
+      shippingDisplay.textContent = deliveryFee === 0 ? 'COMPLIMENTARY' : formatEGP(deliveryFee);
+      totalEl.textContent = formatEGP(total);
+
+      listEl.innerHTML = cart.map(item => {
+        const unitPrice = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
+        return `
+          <div class="py-3 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="relative w-14 aspect-[3/4] bg-sand border border-hairline overflow-hidden shrink-0">
+                <img src="${item.product.image}" alt="${item.product.title}" class="w-full h-full object-cover">
+                <span class="absolute top-0 right-0 bg-obsidian text-white text-[9px] font-bold px-1.5 py-0.5">
+                  ${item.quantity}
+                </span>
+              </div>
+              <div>
+                <span class="text-[9px] uppercase font-bold tracking-wider text-charcoal block">${item.product.house}</span>
+                <h5 class="text-xs font-bold text-obsidian uppercase leading-tight line-clamp-1">${item.product.title}</h5>
+                <span class="text-[10px] text-charcoal">${item.product.dimensions}</span>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-obsidian">${formatEGP(unitPrice * item.quantity)}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleShopifyCheckoutSubmit(e) {
+      e.preventDefault();
+      if (cart.length === 0) return;
+
+      const primaryPhone = document.getElementById('checkoutPrimaryPhone').value.trim();
+      const backupPhone = document.getElementById('checkoutBackupPhone').value.trim();
+      const firstName = document.getElementById('checkoutFirstName').value.trim();
+      const lastName = document.getElementById('checkoutLastName').value.trim();
+      const city = document.getElementById('checkoutCity').value;
+      const street = document.getElementById('checkoutStreet').value.trim();
+      const landmark = document.getElementById('checkoutLandmark').value.trim();
+      const paymentMethod = document.querySelector('input[name="checkoutPayment"]:checked').value;
+
+      let subtotal = 0;
+      cart.forEach(item => {
+        const price = calculateDiscountedPrice(item.product.basePrice, item.product.discountPercent);
+        subtotal += price * item.quantity;
+      });
+
+      const deliveryFee = settings.deliveryFee || 0;
+      const total = subtotal + deliveryFee;
+
+      // Generate Order ID: LAYL-100X
+      const nextIdNum = 1000 + orders.length + 1;
+      const orderId = `LAYL-${nextIdNum}`;
+
+      const now = new Date();
+      const dateStr = now.toISOString().replace('T', ' ').substring(0, 16);
+
+      const newOrder = {
+        id: orderId,
+        createdAt: dateStr,
+        customer: {
+          firstName,
+          lastName,
+          primaryPhone,
+          backupPhone,
+          city,
+          address: street,
+          landmark
+        },
+        paymentMethod,
+        items: [...cart],
+        subtotal,
+        deliveryFee,
+        total,
+        status: 'Being Prepared'
+      };
+
+      orders.unshift(newOrder);
+      saveOrdersToStorage();
+
+      // Clear Bag
+      cart = [];
+      saveCartToStorage();
+      updateCartUI();
+
+      closeShopifyCheckout();
+
+      lastConfirmedOrderId = orderId;
+      document.getElementById('successOrderIdDisplay').textContent = `ORDER ID: ${orderId}`;
+      document.getElementById('orderSuccessModal').classList.remove('hidden');
+
+      showToast(`Order ${orderId} confirmed successfully!`);
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('orderSuccessModal').classList.add('hidden');
+    }
+
+    function viewTrackingFromConfirmation() {
+      closeSuccessModal();
+      openTrackOrderModal();
+      if (lastConfirmedOrderId) {
+        document.getElementById('trackSearchInput').value = lastConfirmedOrderId;
+        executeTrackLookup(lastConfirmedOrderId);
+      }
+    }
+
+    /**
+     * CUSTOMER LIVE ORDER TRACKING CONTROLLER ("TRACK ORDER")
+     */
+    function openTrackOrderModal() {
+      document.getElementById('trackOrderModal').classList.remove('hidden');
+      document.getElementById('trackNotFoundError').classList.add('hidden');
+      setTimeout(() => {
+        document.getElementById('trackSearchInput').focus();
+      }, 100);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeTrackOrderModal() {
+      document.getElementById('trackOrderModal').classList.add('hidden');
+    }
+
+    function handleTrackOrderSearch(e) {
+      e.preventDefault();
+      const query = document.getElementById('trackSearchInput').value.trim();
+      executeTrackLookup(query);
+    }
+
+    function executeTrackLookup(query) {
+      const clean = query.trim().toLowerCase();
+      const digits = query.replace(/[^\d]/g, '');
+
+      const found = orders.find(o => {
+        if (o.id.toLowerCase() === clean) return true;
+        if (digits.length >= 8) {
+          const p1 = o.customer.primaryPhone.replace(/[^\d]/g, '');
+          const p2 = o.customer.backupPhone ? o.customer.backupPhone.replace(/[^\d]/g, '') : '';
+          if (p1.includes(digits) || digits.includes(p1)) return true;
+          if (p2 && (p2.includes(digits) || digits.includes(p2))) return true;
+        }
+        return false;
+      });
+
+      const resultBox = document.getElementById('trackResultContainer');
+      const errorBox = document.getElementById('trackNotFoundError');
+
+      if (!found) {
+        resultBox.classList.add('hidden');
+        errorBox.classList.remove('hidden');
+        return;
+      }
+
+      errorBox.classList.add('hidden');
+      resultBox.classList.remove('hidden');
+
+      document.getElementById('trackResultOrderId').textContent = found.id;
+      document.getElementById('trackResultCustomer').textContent = `${found.customer.firstName} ${found.customer.lastName} (${found.customer.city})`;
+      document.getElementById('trackResultTotal').textContent = formatEGP(found.total);
+
+      // 4-Step Visual Progress Tracker Highlighting
+      const steps = ['Being Prepared', 'With Delivery Company', 'Out for Delivery', 'Delivered'];
+      const currentIdx = steps.indexOf(found.status);
+
+      const narratives = {
+        'Being Prepared': 'Your piece is being authenticated, packaged, and prepared in Cairo for courier dispatch.',
+        'With Delivery Company': 'Your package has been securely handed over to our courier partner.',
+        'Out for Delivery': 'Your order is with the delivery courier and on its way to your address today.',
+        'Delivered': 'Your order has been delivered. Thank you for shopping with LAYL Maison.'
+      };
+
+      document.getElementById('trackStatusNarrative').textContent = narratives[found.status] || 'Processing order';
+
+      for (let i = 1; i <= 4; i++) {
+        const stepEl = document.getElementById(`trackStep${i}`);
+        const stepIdx = i - 1;
+        if (stepIdx <= currentIdx) {
+          stepEl.className = 'p-3 border transition-all border-obsidian bg-sand text-obsidian font-bold shadow-sm';
+          stepEl.querySelector('div').className = 'w-8 h-8 rounded-none bg-obsidian text-white flex items-center justify-center mx-auto mb-2 text-xs font-bold';
+        } else {
+          stepEl.className = 'p-3 border transition-all border-hairline bg-alabaster text-charcoal/70';
+          stepEl.querySelector('div').className = 'w-8 h-8 rounded-none bg-sand text-charcoal flex items-center justify-center mx-auto mb-2 text-xs font-bold';
+        }
+      }
+
+      // Render Items in Shipment
+      const itemsList = document.getElementById('trackItemsList');
+      itemsList.innerHTML = found.items.map(it => {
+        const unitPrice = calculateDiscountedPrice(it.product.basePrice, it.product.discountPercent);
+        return `
+          <div class="py-2.5 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-3">
+              <div class="w-12 aspect-[3/4] bg-sand border border-hairline overflow-hidden">
+                <img src="${it.product.image}" alt="${it.product.title}" class="w-full h-full object-cover">
+              </div>
+              <div>
+                <span class="text-[10px] uppercase font-bold text-charcoal block">${it.product.house}</span>
+                <span class="font-bold text-obsidian">${it.product.title}</span>
+                <span class="text-[10px] text-charcoal block">Qty: ${it.quantity}</span>
+              </div>
+            </div>
+            <span class="font-bold text-obsidian">${formatEGP(unitPrice * it.quantity)}</span>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    /**
+     * OWNER PORTAL (ADMIN DASHBOARD)
+     */
+    function openOwnerPortal() {
+      document.getElementById('ownerPortalModal').classList.remove('hidden');
+      renderAdminOrders();
+      renderAdminProducts();
+      populateSiteContentForm();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeOwnerPortal() {
+      document.getElementById('ownerPortalModal').classList.add('hidden');
+    }
+
+    function switchAdminTab(tabName) {
+      document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabName) {
+          btn.className = 'admin-tab-btn px-5 py-3 border-b-2 border-obsidian text-obsidian bg-alabaster';
+        } else {
+          btn.className = 'admin-tab-btn px-5 py-3 border-b-2 border-transparent text-charcoal hover:text-obsidian';
+        }
+      });
+
+      document.querySelectorAll('.admin-tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+
+      if (tabName === 'orders') {
+        document.getElementById('adminTabOrders').classList.remove('hidden');
+        renderAdminOrders();
+      }
+      if (tabName === 'products') {
+        document.getElementById('adminTabProducts').classList.remove('hidden');
+        renderAdminProducts();
+      }
+      if (tabName === 'siteContent') {
+        document.getElementById('adminTabSiteContent').classList.remove('hidden');
+        populateSiteContentForm();
+      }
+      if (tabName === 'export') {
+        document.getElementById('adminTabExport').classList.remove('hidden');
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    /**
+     * TAB 1: ORDERS MANAGEMENT CONTROLLER
+     */
+    function renderAdminOrders() {
+      const container = document.getElementById('adminOrdersCardsList');
+      const badge = document.getElementById('adminOrdersBadge');
+      
+      // Update KPIs
+      const prepCount = orders.filter(o => o.status === 'Being Prepared').length;
+      const outCount = orders.filter(o => o.status === 'Out for Delivery').length;
+      const doneCount = orders.filter(o => o.status === 'Delivered').length;
+
+      document.getElementById('kpiTotalOrders').textContent = orders.length;
+      document.getElementById('kpiPrepOrders').textContent = prepCount;
+      document.getElementById('kpiOutOrders').textContent = outCount;
+      document.getElementById('kpiDoneOrders').textContent = doneCount;
+      badge.textContent = orders.length;
+
+      let filtered = [...orders];
+      if (currentAdminOrderFilter !== 'All') {
+        filtered = filtered.filter(o => o.status === currentAdminOrderFilter);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-12 text-center border border-hairline bg-white text-charcoal text-xs">
+            No orders match the selected filter.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(order => {
+        const isPrep = order.status === 'Being Prepared';
+        const isWithCo = order.status === 'With Delivery Company';
+        const isOut = order.status === 'Out for Delivery';
+        const isDone = order.status === 'Delivered';
+
+        return `
+          <div class="bg-white border border-hairline p-6 space-y-4 shadow-sm">
+            
+            <!-- Order Header Info -->
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-hairline">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-base font-bold text-obsidian">${order.id}</span>
+                <span class="text-xs text-charcoal">Placed: ${order.createdAt}</span>
+                <span class="text-xs font-bold px-2.5 py-0.5 border ${isDone ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-amber-50 text-amber-800 border-amber-200'}">
+                  ${order.status}
+                </span>
+              </div>
+              <div class="text-right">
+                <span class="text-sm font-bold text-obsidian">${formatEGP(order.total)}</span>
+                <span class="text-[10px] text-charcoal uppercase block">${order.paymentMethod}</span>
+              </div>
+            </div>
+
+            <!-- Customer Contact & Address (High Legibility for Courier) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-sand border border-hairline text-xs">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-charcoal block mb-1">Customer & Courier Phone Contacts</span>
+                <span class="font-bold text-obsidian text-sm block">${order.customer.firstName} ${order.customer.lastName}</span>
+                <div class="mt-1 space-y-0.5 font-mono">
+                  <div class="text-obsidian font-bold">Primary: <a href="tel:${order.customer.primaryPhone}" class="underline">${order.customer.primaryPhone}</a></div>
+                  <div class="text-charcoal">Backup: <a href="tel:${order.customer.backupPhone}" class="underline">${order.customer.backupPhone}</a></div>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-[10px] uppercase font-bold text-charcoal block mb-1">Destination Address</span>
+                <span class="font-bold text-obsidian block">${order.customer.city}</span>
+                <span class="text-charcoal block">${order.customer.address}</span>
+                ${order.customer.landmark ? `<span class="text-charcoal text-[11px] block mt-0.5">Landmark: ${order.customer.landmark}</span>` : ''}
+              </div>
+            </div>
+
+            <!-- Items Ordered -->
+            <div class="space-y-2">
+              <span class="text-[10px] uppercase font-bold text-charcoal block">Items in Order</span>
+              <div class="space-y-2">
+                ${order.items.map(it => `
+                  <div class="flex items-center justify-between text-xs py-1.5 border-b border-hairline/60">
+                    <div class="flex items-center gap-3">
+                      <img src="${it.product.image}" class="w-10 h-12 object-cover border border-hairline">
+                      <div>
+                        <span class="font-bold text-obsidian">${it.product.house} - ${it.product.title}</span>
+                        <span class="text-[10px] text-charcoal block">${it.product.dimensions} • Qty: ${it.quantity}</span>
+                      </div>
+                    </div>
+                    <span class="font-mono font-bold">${formatEGP(calculateDiscountedPrice(it.product.basePrice, it.product.discountPercent) * it.quantity)}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- ONE-CLICK STATUS BUTTONS -->
+            <div class="pt-4 border-t border-hairline flex flex-wrap items-center justify-between gap-3">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold text-charcoal uppercase mr-1">Update Status:</span>
+                <button 
+                  type="button"
+                  onclick="window.handleOrderStatus('${order.id}', 'Being Prepared')" 
+                  class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider border ${isPrep ? 'bg-obsidian text-white border-obsidian' : 'bg-sand text-charcoal border-hairline hover:border-obsidian'}"
+                >
+                  Being Prepared
+                </button>
+                <button 
+                  type="button"
+                  onclick="window.handleOrderStatus('${order.id}', 'With Delivery Company')" 
+                  class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider border ${isWithCo ? 'bg-obsidian text-white border-obsidian' : 'bg-sand text-charcoal border-hairline hover:border-obsidian'}"
+                >
+                  With Delivery Co.
+                </button>
+                <button 
+                  type="button"
+                  onclick="window.handleOrderStatus('${order.id}', 'Out for Delivery')" 
+                  class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider border ${isOut ? 'bg-obsidian text-white border-obsidian' : 'bg-sand text-charcoal border-hairline hover:border-obsidian'}"
+                >
+                  Out for Delivery
+                </button>
+                <button 
+                  type="button"
+                  onclick="window.handleOrderStatus('${order.id}', 'Delivered')" 
+                  class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider border ${isDone ? 'bg-emerald-800 text-white border-emerald-800' : 'bg-sand text-charcoal border-hairline hover:border-emerald-800'}"
+                >
+                  Delivered / Done
+                </button>
+              </div>
+
+              <button type="button" onclick="window.handleDeleteOrder('${order.id}')" class="text-xs font-bold text-red-700 hover:underline">
+                Delete Order
+              </button>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterAdminOrders(status) {
+      currentAdminOrderFilter = status;
+      document.querySelectorAll('.order-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === status) {
+          btn.className = 'order-filter-btn px-3 py-1 text-xs font-bold bg-obsidian text-white border border-obsidian';
+        } else {
+          btn.className = 'order-filter-btn px-3 py-1 text-xs font-bold bg-sand text-charcoal border border-hairline hover:border-obsidian';
+        }
+      });
+      renderAdminOrders();
+    }
+
+    window.handleOrderStatus = function(orderId, newStatus) {
+      const order = orders.find(o => String(o.id) === String(orderId));
+      if (!order) return;
+
+      order.status = newStatus;
+      saveOrdersToStorage();
+      renderAdminOrders();
+      showToast(`Order ${orderId} updated to "${newStatus}"`);
+    };
+    window.changeOrderStatus = window.handleOrderStatus;
+
+    window.handleDeleteOrder = function(orderId) {
+      orders = orders.filter(o => String(o.id) !== String(orderId));
+      saveOrdersToStorage();
+      renderAdminOrders();
+      showToast(`Order ${orderId} removed`);
+    };
+    window.deleteOrder = window.handleDeleteOrder;
+
+    /**
+     * TAB 2: MANAGE PRODUCTS & SALES (GLOBAL WINDOW FUNCTIONS & ZERO CONFIRM/ALERT)
+     */
+    function renderAdminProducts() {
+      const tbody = document.getElementById('adminProductsTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = products.map(p => {
+        const finalPrice = calculateDiscountedPrice(p.basePrice, p.discountPercent);
+        return `
+          <tr class="hover:bg-sand/60 transition-colors" data-admin-product-row="${p.id}">
+            <td class="p-3">
+              <img src="${p.image}" alt="${p.title}" class="w-10 h-14 object-cover border border-hairline">
+            </td>
+            <td class="p-3">
+              <span class="text-[10px] uppercase font-bold text-charcoal block">${p.house}</span>
+              <span class="font-serif font-bold text-obsidian text-sm block">${p.title}</span>
+              <span class="text-[10px] text-charcoal block">${p.dimensions}</span>
+            </td>
+            <td class="p-3 font-mono font-bold">${formatEGP(p.basePrice)}</td>
+            <td class="p-3 font-bold text-sienna">${p.discountPercent}%</td>
+            <td class="p-3 font-mono font-bold text-obsidian">${formatEGP(finalPrice)}</td>
+            <td class="p-3">
+              <span class="text-[10px] font-bold uppercase ${p.stockStatus === 'sold_out' ? 'text-red-700' : 'text-emerald-800'}">
+                ${p.stockStatus === 'sold_out' ? 'Sold Out' : 'In Stock'}
+              </span>
+            </td>
+            <td class="p-3 text-right whitespace-nowrap">
+              <button type="button" onclick="window.handleEditProduct('${p.id}')" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider bg-sand border border-hairline hover:border-obsidian hover:bg-obsidian hover:text-white transition-colors mr-2">
+                EDIT
+              </button>
+              <button type="button" onclick="window.handleDeleteProduct('${p.id}')" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider bg-red-50 text-red-700 border border-red-200 hover:bg-red-700 hover:text-white transition-colors">
+                DELETE
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function handleProductPhotoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const base64 = evt.target.result;
+        document.getElementById('adminProdImageUrl').value = base64;
+        const preview = document.getElementById('adminProdPhotoPreview');
+        preview.src = base64;
+        preview.classList.remove('hidden');
+        document.getElementById('adminProdPhotoPlaceholder').classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleProductPhotoUrlInput() {
+      const val = document.getElementById('adminProdImageUrl').value.trim();
+      const preview = document.getElementById('adminProdPhotoPreview');
+      if (val) {
+        preview.src = val;
+        preview.classList.remove('hidden');
+        document.getElementById('adminProdPhotoPlaceholder').classList.add('hidden');
+      }
+    }
+
+    window.handleEditProduct = function(id) {
+      const prod = products.find(p => String(p.id) === String(id));
+      if (!prod) return;
+
+      const editingInput = document.getElementById('editingProductId');
+      const legacyEditInput = document.getElementById('editProductId');
+      if (editingInput) editingInput.value = String(prod.id);
+      if (legacyEditInput) legacyEditInput.value = String(prod.id);
+
+      document.getElementById('adminProdTitle').value = prod.title || '';
+      document.getElementById('adminProdHouse').value = prod.house || 'Hermès';
+      document.getElementById('adminProdBasePrice').value = prod.basePrice || 0;
+      document.getElementById('adminProdDiscount').value = prod.discountPercent || 0;
+      document.getElementById('adminProdStock').value = prod.stockStatus || 'in_stock';
+      document.getElementById('adminProdMaterial').value = prod.material || '';
+      document.getElementById('adminProdDimensions').value = prod.dimensions || '';
+      document.getElementById('adminProdDescription').value = prod.description || '';
+      document.getElementById('adminProdImageUrl').value = prod.image || '';
+
+      const preview = document.getElementById('adminProdPhotoPreview');
+      const placeholder = document.getElementById('adminProdPhotoPlaceholder');
+      if (prod.image) {
+        preview.src = prod.image;
+        preview.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        preview.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+
+      document.getElementById('adminProductFormHeading').textContent = `Editing: ${prod.title}`;
+      const submitBtn = document.getElementById('adminProductSubmitBtn');
+      if (submitBtn) submitBtn.textContent = 'SAVE CHANGES TO PRODUCT';
+
+      const badge = document.getElementById('adminEditingBadge');
+      if (badge) badge.classList.remove('hidden');
+
+      const formCard = document.getElementById('adminProductFormCard');
+      if (formCard) {
+        formCard.classList.remove('border-hairline');
+        formCard.classList.add('border-2', 'border-obsidian', 'ring-4', 'ring-obsidian/10');
+        formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      const tabContainer = document.getElementById('adminTabProducts');
+      if (tabContainer) {
+        tabContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      showToast(`Editing "${prod.title}"`);
+    };
+    window.editProductInForm = window.handleEditProduct;
+
+    window.cancelProductEdit = function() {
+      const editingInput = document.getElementById('editingProductId');
+      const legacyEditInput = document.getElementById('editProductId');
+      if (editingInput) editingInput.value = '';
+      if (legacyEditInput) legacyEditInput.value = '';
+
+      const form = document.getElementById('adminProductForm');
+      if (form) form.reset();
+
+      document.getElementById('adminProdPhotoPreview').classList.add('hidden');
+      document.getElementById('adminProdPhotoPlaceholder').classList.remove('hidden');
+      document.getElementById('adminProductFormHeading').textContent = 'Add New Scarf to Collections';
+
+      const submitBtn = document.getElementById('adminProductSubmitBtn');
+      if (submitBtn) submitBtn.textContent = 'SAVE PRODUCT';
+
+      const badge = document.getElementById('adminEditingBadge');
+      if (badge) badge.classList.add('hidden');
+
+      const formCard = document.getElementById('adminProductFormCard');
+      if (formCard) {
+        formCard.classList.add('border-hairline');
+        formCard.classList.remove('border-2', 'border-obsidian', 'ring-4', 'ring-obsidian/10');
+      }
+    };
+
+    window.handleSaveProduct = function(e) {
+      if (e) e.preventDefault();
+      const editId = (document.getElementById('editingProductId').value || document.getElementById('editProductId').value || '').trim();
+      const title = document.getElementById('adminProdTitle').value.trim();
+      const house = document.getElementById('adminProdHouse').value;
+      const basePrice = parseFloat(document.getElementById('adminProdBasePrice').value) || 0;
+      const discountPercent = parseFloat(document.getElementById('adminProdDiscount').value) || 0;
+      const stockStatus = document.getElementById('adminProdStock').value;
+      const material = document.getElementById('adminProdMaterial').value.trim();
+      const dimensions = document.getElementById('adminProdDimensions').value.trim();
+      const description = document.getElementById('adminProdDescription').value.trim();
+      const image = document.getElementById('adminProdImageUrl').value.trim() || '/assets/aistudio/WhatsApp_Image_2026-10-28_at_13.48.15_4de1c21e.jpeg';
+
+      if (editId) {
+        const prodIndex = products.findIndex(p => String(p.id) === String(editId));
+        if (prodIndex !== -1) {
+          products[prodIndex] = {
+            ...products[prodIndex],
+            title,
+            house,
+            basePrice,
+            discountPercent,
+            stockStatus,
+            material,
+            dimensions,
+            description,
+            image
+          };
+          showToast(`Saved changes to "${title}"`);
+        }
+      } else {
+        const newId = 'layl-' + Date.now();
+        const sku = `LAYL-${house.substring(0, 3).toUpperCase()}-${Math.floor(100 + Math.random() * 900)}`;
+        products.unshift({
+          id: newId,
+          title,
+          house,
+          basePrice,
+          discountPercent,
+          stockStatus,
+          material,
+          dimensions,
+          description,
+          image,
+          origin: house === 'Burberry' ? 'London, United Kingdom' : 'Paris, France',
+          sku
+        });
+        showToast(`Added "${title}" to Collections`);
+      }
+
+      saveProductsToStorage();
+      renderProductGrid();
+      renderAdminProducts();
+      window.cancelProductEdit();
+    };
+    window.handleSaveProductForm = window.handleSaveProduct;
+
+    window.handleDeleteProduct = function(id) {
+      const target = products.find(p => String(p.id) === String(id));
+      const deletedTitle = target ? target.title : 'Product';
+
+      products = products.filter(p => String(p.id) !== String(id));
+      saveProductsToStorage();
+      renderAdminProducts();
+      renderProductGrid();
+
+      const currentEditId = (document.getElementById('editingProductId').value || document.getElementById('editProductId').value || '').trim();
+      if (currentEditId && String(currentEditId) === String(id)) {
+        window.cancelProductEdit();
+      }
+
+      showToast(`Deleted "${deletedTitle}" from Collections`);
+    };
+    window.deleteProduct = window.handleDeleteProduct;
+
+    function executeQuickSale() {
+      const targetHouse = document.getElementById('quickSaleHouse').value;
+      const percent = parseFloat(document.getElementById('quickSalePercent').value) || 0;
+
+      products = products.map(p => {
+        if (targetHouse === 'All' || p.house.toLowerCase() === targetHouse.toLowerCase()) {
+          return { ...p, discountPercent: Math.min(Math.max(percent, 0), 90) };
+        }
+        return p;
+      });
+
+      saveProductsToStorage();
+      renderProductGrid();
+      renderAdminProducts();
+      showToast(`Applied ${percent}% discount to ${targetHouse === 'All' ? 'all houses' : targetHouse}`);
+    }
+
+    function clearAllDiscounts() {
+      products = products.map(p => ({ ...p, discountPercent: 0 }));
+      saveProductsToStorage();
+      renderProductGrid();
+      renderAdminProducts();
+      showToast('All discounts reset to 0%');
+    }
+
+    /**
+     * TAB 3: EDIT WEBSITE TEXT & PHOTOS
+     */
+    function populateSiteContentForm() {
+      document.getElementById('adminSiteAnnouncement').value = settings.announcementText;
+      document.getElementById('adminSiteSupportPhone').value = settings.supportPhone;
+      document.getElementById('adminSiteDeliveryFee').value = settings.deliveryFee || 0;
+
+      document.getElementById('adminSiteHeroHeadline').value = settings.heroHeadline;
+      document.getElementById('adminSiteHeroSubtitle').value = settings.heroSubtitle;
+      document.getElementById('adminSiteHeroButton').value = settings.heroButtonText;
+      document.getElementById('adminSiteHeroImageUrl').value = settings.heroImage;
+      document.getElementById('adminSiteHeroPreview').src = settings.heroImage;
+
+      document.getElementById('adminCardTitleHermes').value = settings.cardHermes.title;
+      document.getElementById('adminCardSubHermes').value = settings.cardHermes.subtitle;
+      document.getElementById('adminCardImgHermes').value = settings.cardHermes.image;
+
+      document.getElementById('adminCardTitleLV').value = settings.cardLV.title;
+      document.getElementById('adminCardSubLV').value = settings.cardLV.subtitle;
+      document.getElementById('adminCardImgLV').value = settings.cardLV.image;
+
+      document.getElementById('adminCardTitleBurberry').value = settings.cardBurberry.title;
+      document.getElementById('adminCardSubBurberry').value = settings.cardBurberry.subtitle;
+      document.getElementById('adminCardImgBurberry').value = settings.cardBurberry.image;
+
+      document.getElementById('adminSiteStoryTitle').value = settings.storyTitle;
+      document.getElementById('adminSiteStoryText').value = settings.storyText;
+      document.getElementById('adminSiteFooterText').value = settings.footerText;
+    }
+
+    function handleHeroPhotoUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const base64 = evt.target.result;
+        document.getElementById('adminSiteHeroImageUrl').value = base64;
+        document.getElementById('adminSiteHeroPreview').src = base64;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleHeroPhotoUrlInput() {
+      const val = document.getElementById('adminSiteHeroImageUrl').value.trim();
+      if (val) document.getElementById('adminSiteHeroPreview').src = val;
+    }
+
+    function handleBrandCardPhotoUpload(e, brand) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const base64 = evt.target.result;
+        if (brand === 'Hermès') document.getElementById('adminCardImgHermes').value = base64;
+        if (brand === 'LV') document.getElementById('adminCardImgLV').value = base64;
+        if (brand === 'Burberry') document.getElementById('adminCardImgBurberry').value = base64;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleBrandCardPhotoUrl(brand) {
+      // Input already binds on form submit
+    }
+
+    function handleSaveSiteContent(e) {
+      e.preventDefault();
+
+      settings.announcementText = document.getElementById('adminSiteAnnouncement').value.trim();
+      settings.supportPhone = document.getElementById('adminSiteSupportPhone').value.trim();
+      settings.deliveryFee = parseFloat(document.getElementById('adminSiteDeliveryFee').value) || 0;
+
+      settings.heroHeadline = document.getElementById('adminSiteHeroHeadline').value.trim();
+      settings.heroSubtitle = document.getElementById('adminSiteHeroSubtitle').value.trim();
+      settings.heroButtonText = document.getElementById('adminSiteHeroButton').value.trim();
+      settings.heroImage = document.getElementById('adminSiteHeroImageUrl').value.trim() || settings.heroImage;
+
+      settings.cardHermes.title = document.getElementById('adminCardTitleHermes').value.trim();
+      settings.cardHermes.subtitle = document.getElementById('adminCardSubHermes').value.trim();
+      settings.cardHermes.image = document.getElementById('adminCardImgHermes').value.trim() || settings.cardHermes.image;
+
+      settings.cardLV.title = document.getElementById('adminCardTitleLV').value.trim();
+      settings.cardLV.subtitle = document.getElementById('adminCardSubLV').value.trim();
+      settings.cardLV.image = document.getElementById('adminCardImgLV').value.trim() || settings.cardLV.image;
+
+      settings.cardBurberry.title = document.getElementById('adminCardTitleBurberry').value.trim();
+      settings.cardBurberry.subtitle = document.getElementById('adminCardSubBurberry').value.trim();
+      settings.cardBurberry.image = document.getElementById('adminCardImgBurberry').value.trim() || settings.cardBurberry.image;
+
+      settings.storyTitle = document.getElementById('adminSiteStoryTitle').value.trim();
+      settings.storyText = document.getElementById('adminSiteStoryText').value.trim();
+      settings.footerText = document.getElementById('adminSiteFooterText').value.trim();
+
+      saveSettingsToStorage();
+      applySettingsToDOM();
+      showToast('Storefront Content Saved Live!');
+    }
+
+    /**
+     * TAB 4: SAVE & EXPORT WEBSITE HTML
+     */
+    function downloadUpdatedWebsiteHtml() {
+      let htmlContent = document.documentElement.outerHTML;
+
+      const productsJson = JSON.stringify(products, null, 2);
+      const settingsJson = JSON.stringify(settings, null, 2);
+      const ordersJson = JSON.stringify(orders, null, 2);
+
+      htmlContent = htmlContent.replace(
+        /const DEFAULT_PRODUCTS = \[[\s\S]*?\];/m,
+        `const DEFAULT_PRODUCTS = ${productsJson};`
+      );
+
+      htmlContent = htmlContent.replace(
+        /const DEFAULT_SETTINGS = \{[\s\S]*?\};/m,
+        `const DEFAULT_SETTINGS = ${settingsJson};`
+      );
+
+      htmlContent = htmlContent.replace(
+        /const DEFAULT_ORDERS = \[[\s\S]*?\];/m,
+        `const DEFAULT_ORDERS = ${ordersJson};`
+      );
+
+      const blob = new Blob(['<!DOCTYPE html>\n' + htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const dl = document.createElement('a');
+      dl.href = url;
+      dl.download = 'layl-maison-storefront.html';
+      document.body.appendChild(dl);
+      dl.click();
+      document.body.removeChild(dl);
+      URL.revokeObjectURL(url);
+
+      showToast('Downloaded complete updated index.html!');
+    }
+
+    function resetDefaultOrders() {
+      orders = [...DEFAULT_ORDERS];
+      saveOrdersToStorage();
+      renderAdminOrders();
+      showToast('Demo orders restored');
+    }
+
+    function resetDefaultCatalog() {
+      products = [...DEFAULT_PRODUCTS];
+      saveProductsToStorage();
+      renderProductGrid();
+      renderAdminProducts();
+      showToast('Catalog restored to 14 authentic items');
+    }
+
+    /**
+     * TOAST FEEDBACK
+     */
+    function showToast(msg) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    window.addEventListener('DOMContentLoaded', initStore);
+  </script>
+
+</body>
+</html>
